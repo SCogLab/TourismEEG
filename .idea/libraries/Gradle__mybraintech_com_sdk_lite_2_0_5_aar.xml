@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: mybraintech.com:sdk-lite:2.0.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/89c0e13018d92912f45c39b2905e7372/jetified-sdk-lite-2.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/89c0e13018d92912f45c39b2905e7372/jetified-sdk-lite-2.0.5/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mybraintech.com/sdk-lite/2.0.5/f61bfd5faaa0414b448ca8d6e5d22e3ccac31195/sdk-lite-2.0.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mybraintech.com/sdk-lite/2.0.5/a9102058547c1a8c030e0959a7fba8a76a12f15c/sdk-lite-2.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

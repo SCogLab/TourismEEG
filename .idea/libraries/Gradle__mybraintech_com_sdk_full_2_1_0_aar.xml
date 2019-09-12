@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: mybraintech.com:sdk-full:2.1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2724537f982531275c8ba512325dccf9/jetified-sdk-full-2.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2724537f982531275c8ba512325dccf9/jetified-sdk-full-2.1.0/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mybraintech.com/sdk-full/2.1.0/80bfbce264a9756d30de2aa73604610ede6633b/sdk-full-2.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mybraintech.com/sdk-full/2.1.0/7a0ee93cb72fcc71307055b01388a64b7fb9409b/sdk-full-2.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

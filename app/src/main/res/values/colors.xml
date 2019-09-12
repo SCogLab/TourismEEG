@@ -9,4 +9,8 @@
     <color name="gray">#606060</color>
     <color name="light_blue">#63BAE9</color>
     <color name="dark_blue">#03207b</color>
+
+    /* CogLab official color */
+    <color name="purple_coglab">#4d64d5</color>
+    <color name="green_coglab">#3ea5ce</color>
 </resources>
