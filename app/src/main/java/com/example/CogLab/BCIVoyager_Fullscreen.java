@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -243,8 +244,8 @@ public class BCIVoyager_Fullscreen extends AppCompatActivity {
         img = findViewById(R.id.image);
         // On change l'image
         img.setImageResource(R.drawable.logo);
-
-
+        Date date = new Date();
+        Log.i("Date", date.toString());
         //Boolean boundPositiv = true;
 
         //while(boundPositiv) {
@@ -302,18 +303,19 @@ public class BCIVoyager_Fullscreen extends AppCompatActivity {
                  * Liste des cles de la map
                  */
                 List<String> keys = new ArrayList<>(idImgfinal.keySet());
-                Log.i("#taille map", (keys.size() == 0)+"");
+                //Log.i("#taille map", (keys.size() == 0)+"");
 
                 // Condition d'arret du timer
                 if (keys.size() == 0) {
-                    Log.i("#STOP",  "");
+                    //Log.i("#STOP",  "");
 
                     t.cancel(false);
                     //timer.purge();
-
+                    Date date = new Date();
+                    Log.i("Date", date.toString());
                     // Permet de changer d'activity = factultatif
-                    Intent myIntent = new Intent(getBaseContext(), BCIVoyager.class);
-                    startActivityForResult(myIntent, 0);
+                    //Intent myIntent = new Intent(getBaseContext(), BCIVoyager.class);
+                    //startActivityForResult(myIntent, 0);
                 }
                 /**
                  * Nouveau nom d'image de la cle
@@ -330,7 +332,7 @@ public class BCIVoyager_Fullscreen extends AppCompatActivity {
                 /*startStream(new StreamConfig.Builder(eegListener)
                         .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
                         .create());*/
-                Log.i("AAAAAA","aaaaaaa");
+                //Log.i("AAAAAA","aaaaaaa");
                 runOnUiThread(new Runnable() {
 
                     @Override
