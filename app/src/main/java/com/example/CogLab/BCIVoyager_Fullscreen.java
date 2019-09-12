@@ -327,9 +327,9 @@ public class BCIVoyager_Fullscreen extends AppCompatActivity {
                 idImgfinal.remove(randomKey);
 
                 osc.sendOSC(randomKey);
-                startStream(new StreamConfig.Builder(eegListener)
+                /*startStream(new StreamConfig.Builder(eegListener)
                         .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
-                        .create());
+                        .create());*/
                 Log.i("AAAAAA","aaaaaaa");
                 runOnUiThread(new Runnable() {
 
@@ -355,7 +355,7 @@ public class BCIVoyager_Fullscreen extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                stopStream();
+                //stopStream();
 
                 // **************
                 // Etape 3
