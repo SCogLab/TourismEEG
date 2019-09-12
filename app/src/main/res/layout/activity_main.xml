@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.CogLab.BCIVoyager"
+    android:background="#000000">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="111dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:text="Welcome on CogLab experiment"
+            android:textSize="@android:dimen/app_icon_size"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="150px"
+            android:text="Demo Mélomind"
+            android:background="@color/light_blue"
+            android:elevation="10dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="150px"
+            android:text="Launch BCI Voyager"
+            android:background="@color/light_blue"
+            android:elevation="20dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:onClick="" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopButton"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="74dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomButton"
+            app:layout_constraintGuide_begin="603dp"
+            app:layout_constraintTop_toBottomOf="@+id/scanButton"
+             />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
