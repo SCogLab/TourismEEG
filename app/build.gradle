@@ -30,8 +30,22 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
-    implementation 'mybraintech.com:sdk-lite:2.0.5'
-    implementation 'mybraintech.com:sdk-lite:2.0.5:javadoc'
+
+    //Version gratuite du SDK Melomind avec Demo https://github.com/mbt-administrator/DemoSDK.Android/
+
+        //Version de test de Tanguy
+        //implementation 'mybraintech.com:sdk-lite:2.0.5'
+        //implementation 'mybraintech.com:sdk-lite:2.0.5:javadoc'
+
+        //Version en date du 12 septembre
+        //implementation 'mybraintech.com:sdk-lite:2.1.0'
+        //implementation 'mybraintech.com:sdk-lite:2.1.0:javadoc'
+
+    //Pour utiliser les trigger et P300 dans le SKD complet de Melomind
+    implementation 'mybraintech.com:sdk-full:2.1.0'
+    implementation 'mybraintech.com:sdk-full:2.1.0:javadoc'
+
+    implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -39,6 +53,8 @@ dependencies {
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // ! Conserver la version 0.4 de OSC pour éviter les erreurs de compilation
     implementation 'com.illposed.osc:javaosc-core:0.4'
     //implementation 'com.illposed.osc:javaosc-core:0.6'
     // implementation 'com.android.support.constraint:comstraint-layout-solver:1.1.3'

@@ -4,6 +4,23 @@
             "outputFile": "/Users/tanguyherserant/AndroidStudioProjects/TourismEEG/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
             "map": [
                 {
+                    "source": "/Users/tanguyherserant/.gradle/caches/transforms-2/files-2.1/cb634fe4b4d1fdfcd5255e485d30a0c1/material-1.0.0/res/values-large-v4/values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,177",
+                        "endColumns": "121,133",
+                        "endOffsets": "172,306"
+                    },
+                    "to": {
+                        "startLines": "11,12",
+                        "startColumns": "4,4",
+                        "startOffsets": "752,874",
+                        "endColumns": "121,133",
+                        "endOffsets": "869,1003"
+                    }
+                },
+                {
                     "source": "/Users/tanguyherserant/.gradle/caches/transforms-2/files-2.1/37ec02f661e3547c5499ecdfd9f3cd1f/appcompat-1.1.0/res/values-large-v4/values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
