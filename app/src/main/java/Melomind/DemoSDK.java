@@ -1,4 +1,4 @@
-package com.example.CogLab;
+package Melomind;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +24,7 @@ import java.util.Arrays;
 
 import androidx.core.app.ActivityCompat;
 
+import com.example.BCIVoyager.BCIVoyager_Fullscreen;
 import com.example.myapplication.R;
 
 import core.bluetooth.BtState;
@@ -42,7 +43,7 @@ import static features.MbtFeatures.QR_CODE_NAME_PREFIX;
  * First View displayed when you launch the application.
  * Headset Bluetooth connection is established here.
  */
-public class DemoMelomind extends AppCompatActivity{
+public class DemoSDK extends AppCompatActivity{
 
     /**
      * Maximum duration allocated to find a headset
@@ -65,7 +66,7 @@ public class DemoMelomind extends AppCompatActivity{
     private EditText deviceNameField;
 
     /**
-     * Device name value stored from the value of the {@link DemoMelomind#deviceNameField}
+     * Device name value stored from the value of the {@link DemoSDK#deviceNameField}
      */
     private String deviceName;
 
@@ -75,7 +76,7 @@ public class DemoMelomind extends AppCompatActivity{
     private EditText deviceQrCodeField;
 
     /**
-     * Device QR code value stored from the value of the {@link DemoMelomind#deviceQrCodeField}
+     * Device QR code value stored from the value of the {@link DemoSDK#deviceQrCodeField}
      */
     private String deviceQrCode;
 
@@ -85,17 +86,17 @@ public class DemoMelomind extends AppCompatActivity{
     private Spinner deviceNamePrefixSpinner;
 
     /**
-     * Device name prefix value stored from the value of the {@link DemoMelomind#deviceNamePrefixSpinner}
+     * Device name prefix value stored from the value of the {@link DemoSDK#deviceNamePrefixSpinner}
      */
     private String deviceNamePrefix;
 
     /**
-     * Possible device name prefix values for {@link DemoMelomind#deviceNamePrefixSpinner}
+     * Possible device name prefix values for {@link DemoSDK#deviceNamePrefixSpinner}
      */
     private ArrayList<String> prefixNameList;
 
     /**
-     * Adapter that uses {@link DemoMelomind#prefixNameList} to initialize the {@link DemoMelomind#deviceNamePrefixSpinner}
+     * Adapter that uses {@link DemoSDK#prefixNameList} to initialize the {@link DemoSDK#deviceNamePrefixSpinner}
      */
     private ArrayAdapter<String> prefixNameArrayAdapter;
 
@@ -105,7 +106,7 @@ public class DemoMelomind extends AppCompatActivity{
     private Spinner deviceQrCodePrefixSpinner;
 
     /**
-     * Device QR code prefix value stored from the value of the {@link DemoMelomind#deviceQrCodePrefixSpinner}
+     * Device QR code prefix value stored from the value of the {@link DemoSDK#deviceQrCodePrefixSpinner}
      */
     private String deviceQrCodePrefix;
 
@@ -115,7 +116,7 @@ public class DemoMelomind extends AppCompatActivity{
     private ArrayList<String> prefixQrCodeList;
 
     /**
-     * Adapter that uses {@link DemoMelomind#prefixQrCodeList} to initialize the {@link DemoMelomind#deviceQrCodePrefixSpinner}
+     * Adapter that uses {@link DemoSDK#prefixQrCodeList} to initialize the {@link DemoSDK#deviceQrCodePrefixSpinner}
      */
     private ArrayAdapter<String> prefixQrCodeArrayAdapter;
 
@@ -125,9 +126,9 @@ public class DemoMelomind extends AppCompatActivity{
     private Switch connectAudioSwitch;
 
     /**
-     * Boolean value stored from the value of the {@link DemoMelomind#connectAudioSwitch} :
-     * Audio Bluetooth connection is enabled if {@link DemoMelomind#connectAudio} is true.
-     * Audio Bluetooth connection is disabled if {@link DemoMelomind#connectAudio} is false.
+     * Boolean value stored from the value of the {@link DemoSDK#connectAudioSwitch} :
+     * Audio Bluetooth connection is enabled if {@link DemoSDK#connectAudio} is true.
+     * Audio Bluetooth connection is disabled if {@link DemoSDK#connectAudio} is false.
      */
     private boolean connectAudio = false;
 
@@ -138,8 +139,8 @@ public class DemoMelomind extends AppCompatActivity{
 
     /**
      * Boolean value stored for Bluetooth connection cancel :
-     * A Bluetooth connection in progress can be cancelled by the user within the {@link DemoMelomind#SCAN_DURATION} duration by clicking on the {@link DemoMelomind#scanButton}
-     * If no Bluetooth connection is in progress, clicking on the {@link DemoMelomind#scanButton} starts a Bluetooth connection
+     * A Bluetooth connection in progress can be cancelled by the user within the {@link DemoSDK#SCAN_DURATION} duration by clicking on the {@link DemoSDK#scanButton}
+     * If no Bluetooth connection is in progress, clicking on the {@link DemoSDK#scanButton} starts a Bluetooth connection
      */
     private boolean isCancelled = false;
 
@@ -190,7 +191,7 @@ public class DemoMelomind extends AppCompatActivity{
         public void onError(BaseError error, String additionnalInfo) {
             isErrorRaised = true;
             updateScanning(false);
-            toast = Toast.makeText(DemoMelomind.this, error.getMessage()+ (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_LONG);
+            toast = Toast.makeText(DemoSDK.this, error.getMessage()+ (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_LONG);
             toast.show();
         }
 
@@ -250,12 +251,12 @@ public class DemoMelomind extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        toast = Toast.makeText(DemoMelomind.this, "", Toast.LENGTH_LONG);
+        toast = Toast.makeText(DemoSDK.this, "", Toast.LENGTH_LONG);
         sdkClient = MbtClient.init(getApplicationContext());
         isCancelled = false;
 
-        if(getIntent().hasExtra(DemoMelomind.PREVIOUS_ACTIVITY_EXTRA)){
-            if(getIntent().getStringExtra(DemoMelomind.PREVIOUS_ACTIVITY_EXTRA) != null)
+        if(getIntent().hasExtra(DemoSDK.PREVIOUS_ACTIVITY_EXTRA)){
+            if(getIntent().getStringExtra(DemoSDK.PREVIOUS_ACTIVITY_EXTRA) != null)
                 sdkClient.setConnectionStateListener(bluetoothStateListener);
         }
 
@@ -365,7 +366,7 @@ public class DemoMelomind extends AppCompatActivity{
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
         if(!hasPermissions(getApplicationContext(), PERMISSIONS))
-            ActivityCompat.requestPermissions(DemoMelomind.this, PERMISSIONS, PERMISSION_ALL);
+            ActivityCompat.requestPermissions(DemoSDK.this, PERMISSIONS, PERMISSION_ALL);
     }
 
     /**
@@ -387,7 +388,7 @@ public class DemoMelomind extends AppCompatActivity{
      * Method used to start a Bluetooth scan if order to find an available headset and initiate connection
      * If a device name is entered, the SDK connects the corresponding headset.
      * If no device name is entered, the SDK connects the first found available headset.
-     * The SDK stops the scan after {@link DemoMelomind#SCAN_DURATION} seconds if no headset is found
+     * The SDK stops the scan after {@link DemoSDK#SCAN_DURATION} seconds if no headset is found
      */
     private void startScan() {
         isErrorRaised = false;
@@ -398,7 +399,7 @@ public class DemoMelomind extends AppCompatActivity{
                         null : deviceQrCode )
                 .maxScanDuration(SCAN_DURATION);
         if(connectAudio)
-            connectionConfigBuilder.connectAudio();
+            connectionConfigBuilder.connectAudioIfDeviceCompatible();
 
         sdkClient.connectBluetooth(connectionConfigBuilder.create());
     }
@@ -446,11 +447,11 @@ public class DemoMelomind extends AppCompatActivity{
     }
 
     /**
-     * Method called when the {@link DemoMelomind} is closed
+     * Method called when the {@link DemoSDK} is closed
      */
     private void deinitCurrentActivity(){
         bluetoothStateListener = null;
-        final Intent intent = new Intent(DemoMelomind.this, BCIVoyager_Fullscreen.class);
+        final Intent intent = new Intent(DemoSDK.this, BCIVoyager_Fullscreen.class);
         startActivity(intent);
         finish();
     }

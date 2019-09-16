@@ -1,4 +1,4 @@
-package com.example.CogLab;
+package com.example.BCIVoyager;
 
 import android.annotation.SuppressLint;
 

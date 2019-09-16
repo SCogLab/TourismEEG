@@ -9,27 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.CogLab.DemoMelomind">
-        </activity>
+
         <activity
-            android:name="com.example.CogLab.BCIVoyager_Fullscreen"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name="Voyager.Launchscreen"
             android:screenOrientation="landscape"
-            android:label="@string/title_activity_fullscreen"
             android:theme="@style/FullscreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="coglab.fr" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.CogLab.BCIVoyager">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
+
     </application>
+
     <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
+
