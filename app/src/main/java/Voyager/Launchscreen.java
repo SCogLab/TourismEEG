@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -12,8 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.BCIVoyager.BCIVoyager;
-import com.example.BCIVoyager.BCIVoyager_Fullscreen;
 import com.example.myapplication.R;
 
 
@@ -29,23 +26,15 @@ public class Launchscreen extends Activity {
         TextView text = new TextView(this);
         text.setText(R.string.welcomeMsg);
         setContentView(text);
-        Button b = findViewById(R.id.v_start);
-
-        b.setOnClickListener(view ->  {
-
-                Log.i("t", "Change activity");
-                Intent myIntent = new Intent(getBaseContext(), BCIVoyager_Fullscreen.class);
-                startActivityForResult(myIntent, 0);
-        });
 
         /*EditText editText = new EditText(this);
         editText.setHint(R.string.editText);
         editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         editText.setLines(5);*/
         // ATTENTION: This was auto-generated to handle app links.
-        //Intent appLinkIntent = getIntent();
-       // String appLinkAction = appLinkIntent.getAction();
-        //Uri appLinkData = appLinkIntent.getData();
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
     }
 
 
@@ -56,7 +45,6 @@ public class Launchscreen extends Activity {
         getMenuInflater().inflate(R.menu.premiere_activite, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

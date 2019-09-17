@@ -1,143 +1,44 @@
 package com.example.BCIVoyager;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
+
 
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
+import Voyager.Launchscreen;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import config.MbtConfig;
 import config.StreamConfig;
 import core.bluetooth.BtState;
-import core.device.model.MbtDevice;
 import core.eeg.storage.MbtEEGPacket;
 import engine.MbtClient;
-import engine.SimpleRequestCallback;
 import engine.clientevents.BaseError;
 import engine.clientevents.BluetoothStateListener;
-import engine.clientevents.ConnectionStateListener;
-import engine.clientevents.DeviceBatteryListener;
 import engine.clientevents.EegListener;
-import features.MbtDeviceType;
 import features.MbtFeatures;
 
-import static features.MbtFeatures.MELOMIND_DEVICE_NAME_PREFIX;
 import static utils.MatrixUtils.invertFloatMatrix;
 
 public class newFullscreen extends AppCompatActivity {
-    private static String TAG = newFullscreen.class.getName();
-
-    /**
-     * Maximum number of raw EEG data to display on the graph.
-     * As the sampling frequency is 250 Hz, 250 new points are added to the graph every second
-     * The graph window displays 2 seconds of EEG streaming.
-     */
-    private static final int MAX_NUMBER_OF_DATA_TO_DISPLAY = 500;
-
-    /**
-     * Instance of SDK client used to access all the SDK features
-     */
-    private MbtClient sdkClient;
-
-
-    /**
-     * TextView used to display the connected headset name and QR code
-     */
-    private TextView connectedDeviceTextView;
-
-    /**
-     * Graph used to plot the EEG raw data in real time.
-     * The graph window displays 2 seconds of EEG streaming.
-     */
-    private LineChart eegGraph;
-
-    /**
-     * Object used to hold all the curves to plot on the graph
-     */
-    private LineData eegLineData;
-
-    /**
-     * Object used to bundle all the triggers data to plot on the graph
-     */
-    private LineDataSet status;
-
-    /**
-     * Object used to bundle all the raw EEG data of the first channel (P3) to plot on the graph
-     */
-    private LineDataSet channel1;
-
-    /**
-     * Object used to bundle all the raw EEG data of the second channel (P4) to plot on the graph
-     */
-    private LineDataSet channel2;
-
-    /**
-     * Button used start or stop the real time EEG streaming.
-     * A streaming is started if you click on this button whereas no streaming was in progress.
-     * The current streaming is stopped if you click on this button whereas a streaming was in progress.
-     */
-    private Button startStopStreamingButton;
-
-    /**
-     * Button used to disconnect the connected headset.
-     * It also disconnects audio if the headset is connected in Bluetooth for audio streaming.
-     */
-    private Button disconnectButton;
-
-    /**
-     * Button used to get the current battery charge level of the connected headset.
-     */
-    private Button readBatteryButton;
-
-    /**
-     * Boolean value stored for the current Bluetooth connection state of the SDK.
-     *  newFullscreen#isConnected} is true if a headset is connected to the SDK, false otherwise.
-     */
-    private boolean isConnected = false;
-
-    /**
-     * Boolean value stored for the current EEG streaming state of the SDK.
-     * { newFullscreen#isStreaming} is true if a EEG streaming from the headset to the SDK is in progress, false otherwise.
-     * */
-    private boolean isStreaming = false;
-
-    /**
-     * Listener used to receive a notification when the Bluetooth connection state changes
-     * If you just want to know when a headset is connected or disconnected,
-     * you can replace the BluetoothStateListener listener with a ConnectionStateListener<BaseError> listener.
-     */
-    private ConnectionStateListener<BaseError> bluetoothStateListener;
-
-    /**
-     * Listener used to retrieve the EEG raw data when a streaming is in progress
-     */
-    private EegListener<BaseError> eegListener;
-
-    private String deviceName;
-    private String deviceQrCode;
-
-
-    /**
-     * Method called by default when the Activity is started
-     * It initializes all the views, SDK client, and permissions.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,19 +49,310 @@ public class newFullscreen extends AppCompatActivity {
 
         sdkClient = MbtClient.getClientInstance();
         sdkClient.setConnectionStateListener(bluetoothStateListener);
-        //sdkClient.connectBluetooth(connectionConfigBuilder.create());
+        isStreaming = true;
+        startStream(new StreamConfig.Builder(eegListener)
+                .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
+                .create());
 
-        initToolBar();
-        //initConnectedDeviceTextView();
-        initDisconnectButton();
-        initReadBatteryButton();
-        initStartStopStreamingButton();
-        //initEegGraph();
+        /**
+         * Association des images avec leurs nom.
+         * String : nom => permet de retrouver la catégorie
+         * Integer : numero de referencement de l'image
+         */
+        Map<String, Integer> idImg = new HashMap<>();
+
+        // Feed la Map
+        idImg = makeListName(idImg, "i", nbImgCat); // Categorie 0 Test
+
+        idImg = makeListName(idImg, "j", nbImgCat); // Categorie 1 Beach
+        idImg = makeListName(idImg, "k", nbImgCat); // Categorie 2 Family
+        idImg = makeListName(idImg, "l", nbImgCat); // Categorie 3 Outdoor, nature
+        idImg = makeListName(idImg, "m", nbImgCat); // Categorie 4 Snow, winter
+        idImg = makeListName(idImg, "n", nbImgCat); // Categorie 5 Spa
+
+        // TODO: 2019-09-09  Modifier ici pour ajouter les categories
+
+        /**
+         * Copie de idImg car on a besoin d'une variable final pour la passer dans le Timer
+         */
+        final Map<String, Integer> idImgfinal = idImg;
+
+        /**
+         * Notre image View
+         */
+        final ImageView img;
+        // On recherche l'image dans l'activity
+        img = findViewById(R.id.image);
+        // On change l'image
+        img.setImageResource(R.drawable.logo);
+        Date date = new Date();
+
+
+        //Boolean boundPositiv = true;
+
+        //while(boundPositiv) {
+        /**
+         * Timer permettant la mise en marche du défilement des images
+         */
+        final Timer timer = new Timer("Timer");
+        /**
+         * Action a faire pendant le timer
+         */
+        TimerTask repeatedTask = new TimerTask() {
+            public void run() {
+                // runOnUiThread(new Runnable()..) => Cette ligne permet d'effecctuer des modifications
+                // en direct sur l'application
+                // Ici c'est modifier l'image de l'imageView
+
+                // **************
+                // Etape 1
+                // "+" au milieu de l'ecran
+                // **************
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // On récupère la textView
+                        TextView tv = findViewById(R.id.textView2);
+                        // On lui met le signe "+" pour afficher une croix au centre
+                        tv.setText("+");
+                        // On rend invisible l'image
+                        img.setVisibility(View.INVISIBLE);
+                    }
+                });
+                /**
+                 * Calcule un temps variable entre 300 et 500 ms pour l'affichage du "+"
+                 */
+                int sleepTime = (int) ((500 - 300) * Math.random() + 300);
+
+                // sleep permet de mettre en "pause" l'application
+                try {
+                    TimeUnit.MILLISECONDS.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+                // **************
+                // Etape 2
+                // Affichage d'une image
+                // **************
+
+                /*
+                 * Random pour effectuer la selection aleatoire
+                 */
+                Random random = new Random();
+                /*
+                 * Liste des cles de la map
+                 */
+                List<String> keys = new ArrayList<>(idImgfinal.keySet());
+                //Log.i("#taille map", (keys.size() == 0)+"");
+
+                // Condition d'arret du timer
+                if (keys.size() == 0) {
+                    //Log.i("#STOP",  "");
+
+                    t.cancel(false);
+                    //timer.purge();
+                    Date date = new Date();
+                    Log.i("Date", date.toString());
+                    // Permet de changer d'activity = factultatif
+                    //Intent myIntent = new Intent(getBaseContext(), BCIVoyager.class);
+                    //startActivityForResult(myIntent, 0);
+                }
+                /*
+                 * Nouveau nom d'image de la cle
+                 */
+                String randomKey = keys.get(random.nextInt(keys.size()));
+                /*
+                 * reference de l'image obtenu grace au nom
+                 */
+                final Integer newImg = idImgfinal.get(randomKey);
+                // On l'enleve pour eviter de l'avoir en double
+                idImgfinal.remove(randomKey);
+                oscStream tmp = new oscStream();
+                tmp.sendOSC(randomKey);
+                /*startStream(new StreamConfig.Builder(eegListener)
+                        .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
+                        .create());*/
+                //Log.i("AAAAAA","aaaaaaa");
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        //  on change l' image
+                        img.setImageResource(newImg.intValue());
+                        // On re-affiche l'image
+                        img.setVisibility(View.VISIBLE);
+
+                    }
+                });
+
+                try {
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                // sleep de l'etape 2
+                try {
+                    TimeUnit.MILLISECONDS.sleep(sleepImg);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                //stopStream();
+
+                // **************
+                // Etape 3
+                // black screen
+                // **************
+
+                // Maintenant Black screen
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // affichage du black screen, differente façon sont possible pour le faire
+                        //img.setImageResource(R.drawable.black);
+                        img.setVisibility(View.INVISIBLE);
+
+                    }
+                });
+                // Sleep time du black screen
+                try {
+                    TimeUnit.MILLISECONDS.sleep(sleepBS);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                /*
+                 * Création du nombre a afficher
+                 */
+                int nombreAffiche = (int) ((Math.random() * 8) + 1);
+                // Si c'est 5 on met 4...
+                if (nombreAffiche == 5) {
+                    nombreAffiche = 4;
+                }
+                /*
+                 * nombre a afficher, en final pour le changer en "direct"
+                 */
+                final int finalNbr = nombreAffiche;
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // On trouve la text view
+                        TextView tv = findViewById(R.id.textView2);
+                        // On affiche le nombre
+                        tv.setText(finalNbr + "");
+                        // On rend invisible l'image
+                        //img.setVisibility(View.INVISIBLE);
+                    }
+                });
+
+                // Sleep time
+                try {
+                    TimeUnit.MILLISECONDS.sleep(sleepChiffre);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+   /* TimerTask repeatedTask = new TimerTask() {
+        public void run() { */
+
+
+        // 2 variables pour lancer le timer : cf documentation
+
+        long delay = 5000L;
+        long period = 500L;
+        //timer.scheduleAtFixedRate(repeatedTask, delay, period);
+        t = executor.scheduleAtFixedRate(repeatedTask, delay, period, TimeUnit.MILLISECONDS);
+
+
     }
+
+
     /**
-     * Method called to initialize the EEG raw data listener.
-     * This listener provides a callback used to receive a notification when a new packet of EEG data is received
+     * Retourne une liste de tous les noms des images associé à leurs ID.
+     * @param prefixe début du nom ( ex : pour "i00001" le prefixe est "i")
+     * @param nbImages nombre d'images de la categorie
+     * @return Map créée
      */
+    public Map<String, Integer> makeListName(Map<String, Integer> res, String prefixe, Integer nbImages) {
+
+        // !!!!!!!!!!!
+        // Ici on commence à partir de 1 donc i = 1 et i <+=
+        // !!!!!!!!!!!
+        String s;
+        int ID;
+        for (int i = 1; i <= nbImages; ++i) {
+            s = prefixe;
+            if (i < 10) {
+                s += "0000";
+            } else if (i < 100) {
+                s += "000";
+            } else {
+                s += "00";
+            }
+            s += i;
+
+            ID = getResources().getIdentifier(s, "drawable", getPackageName());
+            res.put(s, ID);
+        }
+
+        return res;
+    }
+
+    /**
+     * Nombre d'image totale (peut surement etre fait automatiquement)
+     */
+    final Integer nbFullImg = 8; // Pas besoin ... ?
+    /**
+     * Nombre d'image par catégorie. Toutes les catégories ont le meme nombre d'image
+     */
+    Integer nbImgCat = 29;
+    // TODO: 2019-09-09 Ici ajouter modifer et mettre le bon nombre d'image
+    /**
+     * Pour le timer, on créer un pool de Thread (ici 1 car pas besoin de plus ...)
+     */
+    static ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(10);
+
+    /**
+     * Je sais pas trop, mais c'est pour arreter le timer
+     */
+    static ScheduledFuture<?> t;
+    /**
+     * Sleep time de l'etape 2 : image
+     */
+    int sleepImg = 1000;
+    /**
+     * Sleep time de l'etape 3 : Black screen
+     */
+    int sleepBS = 500;
+
+    /**
+     * Sleep time de l'etape 4 : chiffre final
+     */
+    int sleepChiffre = 1500;
+    /**
+     * Instance of SDK client used to access all the SDK features
+     */
+    private MbtClient sdkClient;
+    /**
+     * Listener used to receive a notification when the Bluetooth connection state changes
+     * If you just want to know when a headset is connected or disconnected,
+     * you can replace the BluetoothStateListener listener with a ConnectionStateListener<BaseError> listener.
+     */
+    private BluetoothStateListener bluetoothStateListener;
+    /**
+     * Boolean value stored for the current EEG streaming state of the SDK.
+     * {link DeviceActivity#isStreaming} is true if a EEG streaming from the headset to the SDK is in progress, false otherwise.
+     */
+    private boolean isStreaming = false;
+    /**
+     * Listener used to retrieve the EEG raw data when a streaming is in progress
+     */
+    private EegListener<BaseError> eegListener;
     private void initEegListener() {
         eegListener = new EegListener<BaseError>() {
             /**
@@ -171,7 +363,7 @@ public class newFullscreen extends AppCompatActivity {
                 Toast.makeText(newFullscreen.this, error.getMessage()+ (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_SHORT).show();
                 if(isStreaming) {
                     stopStream();
-                    updateStreaming();
+                    //updateStreaming();
                 }
             }
 
@@ -191,18 +383,27 @@ public class newFullscreen extends AppCompatActivity {
                     mbtEEGPackets.setChannelsData(invertFloatMatrix(mbtEEGPackets.getChannelsData()));
 
                 if(isStreaming){
-                    if(eegGraph!=null){
-                        addDataToGraph(mbtEEGPackets.getChannelsData(), mbtEEGPackets.getStatusData());
+                    // if(eegGraph!=null){
+                    //addDataToGraph(mbtEEGPackets.getChannelsData(), mbtEEGPackets.getStatusData());
 
-                        StreamCasque appBCI = new StreamCasque();
-                        appBCI.execute(mbtEEGPackets);
+                    oscStream appBCI = new oscStream();
+                    appBCI.execute(mbtEEGPackets);
 
-
-                    }
+                    //}
                 }
             }
         };
     }
+
+    /**
+     * Method used to stop a EEG raw data streaming in progress.
+     */
+    private void stopStream() {
+        isStreaming = false;
+        sdkClient.stopStream();
+    }
+
+    private boolean isConnected = false;
 
     /**
      * Method called to initialize the connection state listener.
@@ -240,116 +441,23 @@ public class newFullscreen extends AppCompatActivity {
              */
             @Override
             public void onError(BaseError error, String additionnalInfo) {
-                notifyUser(error.getMessage()+(additionnalInfo != null ? additionnalInfo : ""));
+                //notifyUser(error.getMessage()+(additionnalInfo != null ? additionnalInfo : ""));
             }
         };
     }
-
     /**
-     * Method used to initialize the top tool bar view
+     * Method called to return on the {link HomeActivity} when the {link DeviceActivity} is closed
      */
-    public void initToolBar(){
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.logo);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.light_blue)));
-        }
+    private void returnOnPreviousActivity() {
+        //notifyUser(getString(R.string.disconnected_headset));
+        eegListener = null;
+        bluetoothStateListener = null;
+        finish();
+        Intent intent = new Intent(newFullscreen.this, Launchscreen.class);
+        //intent.putExtra(HomeActivity.PREVIOUS_ACTIVITY_EXTRA, BCIVoyageur_Fullscreen.TAG);
+        startActivity(intent);
+        finish();
     }
-
-    /**
-     * Method called to initialize the TextView used to display the connected headset name and QR code
-     */
-    /*private void initConnectedDeviceTextView() {
-        connectedDeviceTextView = findViewById(R.id.deviceNameTextView);
-        sdkClient.requestCurrentConnectedDevice(new SimpleRequestCallback<MbtDevice>() {
-
-            /**
-             * Callback used to get the connected headset informations
-             * @param connectedDevice is the connected headset
-             * /
-            @Override
-            public void onRequestComplete(MbtDevice connectedDevice) {
-                if (connectedDevice != null){
-                    String deviceName = connectedDevice.getSerialNumber();
-                    String deviceQrCode = connectedDevice.getExternalName();
-                    connectedDeviceTextView.setText(deviceName + " | " + deviceQrCode);
-                }
-            }
-        });
-    }*/
-
-    /**
-     * Method called to initialize the Button used to disconnect the connected headset on a click.
-     * A click on this button also disconnects audio if the headset is connected in Bluetooth for audio streaming.
-     */
-    private void initDisconnectButton() {
-        /*disconnectButton = findViewById(R.id.disconnectButton);
-        disconnectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
-        if(isStreaming)
-            stopStream();
-
-        sdkClient.disconnectBluetooth();
-    }
-
-    /**
-     * Method called to initialize the Button used to get the battery charge level of the connected headset
-     */
-    private void initReadBatteryButton() {
-        /*readBatteryButton = findViewById(R.id.readBatteryButton);
-        readBatteryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
-        sdkClient.readBattery(new DeviceBatteryListener<BaseError>() {
-
-            /**
-             * Callback used to get the battery level of the connected headset
-             * @param newLevel is the current battery charge level
-             */
-            @Override
-            public void onBatteryChanged(String newLevel) {
-                notifyUser("Current battery level : "+newLevel+" %");
-            }
-
-            /**
-             * Callback used to receive a notification if the battery reading operation is aborted because the SDK returned an error
-             */
-            @Override
-            public void onError(BaseError error, String additionnalInfo) {
-                notifyUser(getString(R.string.error_read_battery));
-            }
-        });
-    }
-
-    /**
-     * Method called to initialize the Button used start or stop the real time EEG streaming.
-     * A streaming is started if you click on this button whereas no streaming was in progress.
-     * The current streaming is stopped if you click on this button whereas a streaming was in progress.
-     */
-    private void initStartStopStreamingButton(){
-        /*startStopStreamingButton = findViewById(R.id.startStopStreamingButton);
-        startStopStreamingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-        });*/
-        if(!isStreaming) {
-            startStream(new StreamConfig.Builder(eegListener)
-                    .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
-                    .create());
-        }else { //streaming is in progress : stopping streaming
-            stopStream(); // set false to isStreaming et null to the eegListener
-        }
-        updateStreaming(); //update the UI text in both case according to the new value of isStreaming
-    }
-
 
     /**
      * Method used to start a EEG raw data streaming.
@@ -361,176 +469,6 @@ public class newFullscreen extends AppCompatActivity {
         sdkClient.startStream(streamConfig);
     }
 
-    /**
-     * Method used to stop a EEG raw data streaming in progress.
-     *
-     */
-    private void stopStream(){
-        isStreaming = false;
-        sdkClient.stopStream();
-    }
-
-    /**
-     * Method called to update the text of the stream button according to the streaming state
-     * The stream button text is changed into "Stop Streaming" if streaming is started
-     * or into "Start Streaming" if streaming is stopped
-     */
-    private void updateStreaming(){
-        startStopStreamingButton.setText((isStreaming ? R.string.stop_streaming : R.string.start_streaming));
-    }
-
-    /**
-     * Method called to initialize the Graph used to plot the raw EEG data
-     */
-    /*public void initEegGraph(){
-        eegGraph = findViewById(R.id.eegGraph);
-
-        status = new LineDataSet(new ArrayList<Entry>(MbtConfig.getEegPacketLength()), getString(R.string.status));
-        channel1 = new LineDataSet(new ArrayList<Entry>(250), getString(R.string.channel_1));
-        channel2 = new LineDataSet(new ArrayList<Entry>(250), getString(R.string.channel_2));
-
-        status.setDrawValues(false);
-        status.disableDashedLine();
-        status.setDrawCircleHole(false);
-        status.setDrawCircles(false);
-        status.setColor(Color.GREEN);
-        status.setDrawFilled(true);
-        status.setFillColor(Color.GREEN);
-        status.setFillAlpha(40);
-        status.setAxisDependency(YAxis.AxisDependency.RIGHT);
-
-        channel1.setDrawValues(false);
-        channel1.disableDashedLine();
-        channel1.setDrawCircleHole(false);
-        channel1.setDrawCircles(false);
-        channel1.setColor(Color.rgb(3,32,123));
-        channel1.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-        channel2.setDrawValues(false);
-        channel2.disableDashedLine();
-        channel2.setDrawCircleHole(false);
-        channel2.setDrawCircles(false);
-        channel2.setColor(Color.rgb(99,186,233));
-        channel2.setAxisDependency(YAxis.AxisDependency.LEFT);
-
-        eegLineData = new LineData();
-
-        eegLineData.addDataSet(channel1);
-        eegLineData.addDataSet(channel2);
-        eegLineData.addDataSet(status);
-
-        eegGraph.setData(eegLineData);
-
-        XAxis xAxis = eegGraph.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.TOP_INSIDE);
-        xAxis.setTextSize(10f);
-        xAxis.setTextColor(Color.WHITE);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setDrawGridLines(true);
-        xAxis.setTextColor(Color.rgb(255, 192, 56));
-        xAxis.setCenterAxisLabels(true);
-        xAxis.setGranularity(1f); // one hour
-
-        eegGraph.setDoubleTapToZoomEnabled(false);
-        eegGraph.setAutoScaleMinMaxEnabled(true);
-        eegGraph.getAxisLeft().setDrawGridLines(false);
-        eegGraph.getAxisLeft().setDrawLabels(true);
-        eegGraph.getAxisRight().setDrawLabels(true);
-        eegGraph.getAxisRight().setDrawGridLines(false);
-        eegGraph.getXAxis().setDrawGridLines(false);
-
-        eegGraph.invalidate();
-    }*/
-
-    /**
-     * Method called to add the entries to the graph every second
-     * @param channelData the matrix of raw EEG data of the last second
-     * @param statusData the list of triggers
-     */
-    private void addDataToGraph(ArrayList<ArrayList<Float>> channelData, ArrayList<Float> statusData) {
-
-        LineData data = eegGraph.getData();
-        if (data != null) {
-
-            if(channelData.size()< MbtFeatures.getNbChannels(MbtDeviceType.MELOMIND)){
-                throw new IllegalStateException("Incorrect matrix size, one or more channel are missing");
-            }else{
-                if(channelsHasTheSameNumberOfData(channelData)){
-                    for(int currentEegData = 0; currentEegData< channelData.get(0).size(); currentEegData++){ //for each number of eeg data
-                        //plot the EEG signal
-                        for (int currentChannel = 0; currentChannel < MbtFeatures.getNbChannels(MbtDeviceType.MELOMIND) ; currentChannel++){
-                            data.addEntry(new Entry(data.getDataSets().get(currentChannel).getEntryCount(), channelData.get(currentChannel).get(currentEegData) *1000000),currentChannel);
-                        }
-                        if(statusData != null) //plot the triggers
-                            data.addEntry(new Entry(data.getDataSets().get(data.getDataSetCount()-1).getEntryCount(), statusData.get(currentEegData).isNaN() ? Float.NaN : statusData.get(currentEegData)), data.getDataSetCount()-1);
-
-                    }
-                }else{
-                    throw new IllegalStateException("Channels do not have the same amount of data");
-                }
-
-            }
-            data.notifyDataChanged();
-            eegGraph.notifyDataSetChanged();// let the chart know it's data has changed
-            eegGraph.setVisibleXRangeMaximum(MAX_NUMBER_OF_DATA_TO_DISPLAY);// limit the number of visible entries : The graph window displays 2 seconds of EEG streaming.
-            eegGraph.moveViewToX((data.getEntryCount()/2));// move to the latest entry : previous entries are saved so that you can scroll on the left to visualize the previous seconds of acquisition.
-
-        }else{
-            throw new IllegalStateException("Graph not correctly initialized");
-        }
-    }
-
-    /**
-     * Method called to check that all the channels contains the same number of EEG data
-     * @param channelData the matrix of raw EEG data of the last second
-     * @return true if the channels contains the same number of EEG data, false otherwise
-     */
-    private boolean channelsHasTheSameNumberOfData(ArrayList<ArrayList<Float>> channelData){
-        boolean hasTheSameNumberOfData = true;
-
-        int size = channelData.get(1).size();
-        for (int i = 0 ; i < MbtFeatures.getNbChannels(MbtDeviceType.MELOMIND) ; i++){
-            if(channelData.get(i).size() != size){
-                hasTheSameNumberOfData = false;
-            }
-        }
-        return hasTheSameNumberOfData;
-    }
-
-    /**
-     * Method used to notify the user by showing a temporary message on the foreground
-     * @param message is the temporary message to show
-     */
-    private void notifyUser(String message){
-        Toast.makeText(newFullscreen.this, message, Toast.LENGTH_LONG).show();
-    }
-
-    /**
-     * Method called by default when the Android device back buttton is clicked.
-     * All the listeners are set to null to avoid memory leaks.
-     */
-    @Override
-    public void onBackPressed() {
-        sdkClient.disconnectBluetooth();
-        eegListener = null;
-        bluetoothStateListener = null;
-        sdkClient.setConnectionStateListener(null);
-        sdkClient.setEEGListener(null);
-        returnOnPreviousActivity();
-    }
-
-    /**
-     * Method called to return on the {@link BCIVoyager} when the {@link newFullscreen} is closed
-     */
-    private void returnOnPreviousActivity(){
-        notifyUser(getString(R.string.disconnected_headset));
-        eegListener = null;
-        bluetoothStateListener = null;
-        finish();
-        Intent intent = new Intent(newFullscreen.this, BCIVoyager.class);
-        //intent.putExtra(BCIVoyager.PREVIOUS_ACTIVITY_EXTRA, newFullscreen.TAG);
-        startActivity(intent);
-    }
 }
 
 

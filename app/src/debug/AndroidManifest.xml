@@ -11,16 +11,12 @@
         android:theme="@style/AppTheme">
 
 
-
         <activity android:name="com.example.BCIVoyager.BCIVoyager">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity
-            android:name="com.example.BCIVoyager.BCIVoyager_Fullscreen"
+            android:name="com.example.Launchscreenv2"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:label="Test fullscreen"

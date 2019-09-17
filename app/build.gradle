@@ -33,13 +33,13 @@ dependencies {
 
     //Version gratuite du SDK Melomind avec Demo https://github.com/mbt-administrator/DemoSDK.Android/
 
-        //Version de test de Tanguy
-        //implementation 'mybraintech.com:sdk-lite:2.0.5'
-        //implementation 'mybraintech.com:sdk-lite:2.0.5:javadoc'
+    //Version de test de Tanguy
+    //implementation 'mybraintech.com:sdk-lite:2.0.5'
+    //implementation 'mybraintech.com:sdk-lite:2.0.5:javadoc'
 
-        //Version en date du 12 septembre
-        //implementation 'mybraintech.com:sdk-lite:2.1.0'
-        //implementation 'mybraintech.com:sdk-lite:2.1.0:javadoc'
+    //Version en date du 12 septembre
+    //implementation 'mybraintech.com:sdk-lite:2.1.0'
+    //implementation 'mybraintech.com:sdk-lite:2.1.0:javadoc'
 
     //Pour utiliser les trigger et P300 dans le SKD complet de Melomind
     implementation 'mybraintech.com:sdk-full:2.1.0'

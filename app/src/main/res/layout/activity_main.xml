@@ -4,57 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Voyager.Launchscreen"
-    android:background="#000000">
-
-
+    android:background="@color/green_coglab"
+    tools:context="Voyager.Launchscreen">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="893dp"
+        android:layout_height="496dp"
         android:background="@color/green_coglab"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="111dp">
-
-        <TextView
-            android:id="@+id/welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welcomeMsg"
-            android:textSize="40sp"
-            android:gravity="center"
-            android:textColor="@color/white" />
-
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/black" />
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="29dp">
 
         <Button
             android:id="@+id/v_start"
             android:layout_width="240dp"
             android:layout_height="70dp"
-            android:text="@string/v_startVoyager"
+            android:layout_gravity="center"
             android:background="@color/light_blue"
             android:elevation="10dp"
+            android:text="@string/v_startVoyager"
             android:textColor="@color/white"
-            android:textSize="22sp"/>
+            android:textSize="22sp" />
+
 
         <Button
             android:id="@+id/demo"
             android:layout_width="240dp"
             android:layout_height="70dp"
-            android:text="@string/v_demo"
+            android:layout_gravity="center"
             android:background="@color/light_blue"
             android:elevation="20dp"
+            android:text="@string/v_demo"
             android:textColor="@color/white"
             android:textSize="20sp"
-            tools:contextClickable="@tools:sample/full_names"
-             />
+            tools:contextClickable="@tools:sample/full_names" />
 
         <EditText
             android:layout_width="fill_parent"
@@ -63,13 +47,28 @@
             android:inputType="number"
             android:lines="5" />
 
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/black" />
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/welcomeMsg"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:padding="15dp"
             android:clickable="true"
+            android:padding="15dp"
             app:srcCompat="@mipmap/ic_launcher" />
 
     </LinearLayout>
