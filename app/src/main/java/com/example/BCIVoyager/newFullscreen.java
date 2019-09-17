@@ -83,6 +83,8 @@ public class newFullscreen extends AppCompatActivity {
         final ImageView img;
         // On recherche l'image dans l'activity
         img = findViewById(R.id.image);
+        final TextView tv = findViewById(R.id.textView2);
+
         // On change l'image
         img.setImageResource(R.drawable.logo);
         Date date = new Date();
@@ -113,7 +115,6 @@ public class newFullscreen extends AppCompatActivity {
                     @Override
                     public void run() {
                         // On récupère la textView
-                        TextView tv = findViewById(R.id.textView2);
                         // On lui met le signe "+" pour afficher une croix au centre
                         tv.setText("+");
                         // On rend invisible l'image
@@ -180,10 +181,11 @@ public class newFullscreen extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        //  on change l' image
-                        img.setImageResource(newImg.intValue());
                         // On re-affiche l'image
                         img.setVisibility(View.VISIBLE);
+                        //  on change l' image
+                        img.setImageResource(newImg.intValue());
+
 
                     }
                 });
@@ -214,6 +216,7 @@ public class newFullscreen extends AppCompatActivity {
                         // affichage du black screen, differente façon sont possible pour le faire
                         //img.setImageResource(R.drawable.black);
                         img.setVisibility(View.INVISIBLE);
+                        tv.setText("");
 
                     }
                 });
@@ -240,7 +243,6 @@ public class newFullscreen extends AppCompatActivity {
                     @Override
                     public void run() {
                         // On trouve la text view
-                        TextView tv = findViewById(R.id.textView2);
                         // On affiche le nombre
                         tv.setText(finalNbr + "");
                         // On rend invisible l'image

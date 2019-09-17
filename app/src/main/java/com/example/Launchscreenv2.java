@@ -195,10 +195,11 @@ public class Launchscreenv2 extends AppCompatActivity {
         sdkClient = MbtClient.init(getApplicationContext());
         isCancelled = false;
 
-        if (getIntent().hasExtra(Launchscreen.PREVIOUS_ACTIVITY_EXTRA)) {
-            if (getIntent().getStringExtra(Launchscreen.PREVIOUS_ACTIVITY_EXTRA) != null)
+        if (getIntent().hasExtra(Launchscreenv2.PREVIOUS_ACTIVITY_EXTRA)) {
+            if (getIntent().getStringExtra(Launchscreenv2.PREVIOUS_ACTIVITY_EXTRA) != null)
                 sdkClient.setConnectionStateListener(bluetoothStateListener);
         }
+        toast = Toast.makeText(Launchscreenv2.this, "", Toast.LENGTH_LONG);
 
         //initToolBar();
         //initDeviceNameField();
