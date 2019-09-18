@@ -62,7 +62,7 @@ public class newFullscreen extends AppCompatActivity {
         Map<String, Integer> idImg = new HashMap<>();
 
         // Feed la Map
-        idImg = makeListName(idImg, "i", nbImgCat); // Categorie 0 Test
+        //idImg = makeListName(idImg, "i", nbImgCat); // Categorie 0 Test
 
         idImg = makeListName(idImg, "j", nbImgCat); // Categorie 1 Beach
         idImg = makeListName(idImg, "k", nbImgCat); // Categorie 2 Family
@@ -71,6 +71,15 @@ public class newFullscreen extends AppCompatActivity {
         idImg = makeListName(idImg, "n", nbImgCat); // Categorie 5 Spa
 
         // TODO: 2019-09-09  Modifier ici pour ajouter les categories
+
+        // Calcule de tous les temps d'attentes
+        for (int i = 0; i < nbFullImg; ++i) {
+            /*
+             * Calcule un temps variable entre 300 et 500 ms pour l'affichage du "+"
+             * Et sauvegarde dans tableau
+             */
+            tempsAttentes[i] = (int) ((500 - 300) * Math.random() + 300);
+        }
 
         /**
          * Copie de idImg car on a besoin d'une variable final pour la passer dans le Timer
@@ -97,6 +106,7 @@ public class newFullscreen extends AppCompatActivity {
          * Timer permettant la mise en marche du défilement des images
          */
         final Timer timer = new Timer("Timer");
+
         /**
          * Action a faire pendant le timer
          */
@@ -121,14 +131,11 @@ public class newFullscreen extends AppCompatActivity {
                         img.setVisibility(View.INVISIBLE);
                     }
                 });
-                /**
-                 * Calcule un temps variable entre 300 et 500 ms pour l'affichage du "+"
-                 */
-                int sleepTime = (int) ((500 - 300) * Math.random() + 300);
+
 
                 // sleep permet de mettre en "pause" l'application
                 try {
-                    TimeUnit.MILLISECONDS.sleep(sleepTime);
+                    TimeUnit.MILLISECONDS.sleep(tempsAttentes[compteur++]);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -305,15 +312,20 @@ public class newFullscreen extends AppCompatActivity {
         return res;
     }
 
-    /**
-     * Nombre d'image totale (peut surement etre fait automatiquement)
+    /*
+    Compteur pour le tableau
      */
-    final Integer nbFullImg = 8; // Pas besoin ... ?
+    int compteur = 0;
     /**
      * Nombre d'image par catégorie. Toutes les catégories ont le meme nombre d'image
      */
     Integer nbImgCat = 29;
     // TODO: 2019-09-09 Ici ajouter modifer et mettre le bon nombre d'image
+    /**
+     * Nombre d'image totale (peut surement etre fait automatiquement)
+     */
+    final Integer nbFullImg = nbImgCat * 5;
+    int[] tempsAttentes = new int[nbFullImg];
     /**
      * Pour le timer, on créer un pool de Thread (ici 1 car pas besoin de plus ...)
      */
