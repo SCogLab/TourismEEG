@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_coglab"
+    android:background="#000000"
     tools:context="Voyager.Launchscreen">
 
 
     <LinearLayout
-        android:layout_width="893dp"
-        android:layout_height="496dp"
-        android:background="@color/green_coglab"
+        android:layout_width="920dp"
+        android:layout_height="560dp"
+        android:background="@color/green_strong_coglab"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="29dp">
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="@string/welcomeMsg"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/coglab_sticker" />
 
         <Button
-            android:id="@+id/v_start"
+            android:id="@+id/c_start"
             android:layout_width="240dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
+            android:text="@string/v_startVoyager"
             android:background="@color/light_blue"
             android:elevation="10dp"
-            android:text="@string/v_startVoyager"
             android:textColor="@color/white"
-            android:textSize="22sp" />
-
+            android:textSize="22sp"/>
 
         <Button
-            android:id="@+id/demo"
+            android:id="@+id/c_demo"
             android:layout_width="240dp"
             android:layout_height="70dp"
-            android:layout_gravity="center"
+            android:text="@string/v_demo"
             android:background="@color/light_blue"
             android:elevation="20dp"
-            android:text="@string/v_demo"
             android:textColor="@color/white"
             android:textSize="20sp"
-            tools:contextClickable="@tools:sample/full_names" />
+            tools:contextClickable="@tools:sample/full_names"/>
 
         <EditText
             android:layout_width="fill_parent"
@@ -47,29 +62,13 @@
             android:inputType="number"
             android:lines="5" />
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/black" />
-
-        <TextView
-            android:id="@+id/welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/welcomeMsg"
-            android:textColor="@color/white"
-            android:textSize="40sp" />
-
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:clickable="true"
             android:padding="15dp"
-            app:srcCompat="@mipmap/ic_launcher" />
+            android:clickable="true"
+            app:srcCompat="@drawable/coglab_transparent" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

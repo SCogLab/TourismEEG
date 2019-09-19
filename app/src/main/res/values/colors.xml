@@ -12,5 +12,8 @@
 
     /* CogLab official color */
     <color name="purple_coglab">#4d64d5</color>
-    <color name="green_coglab">#3ea5ce</color>
+    <color name="purple_light_coglab">#2e48c9</color>
+    <color name="blue_coglab">#3ea5ce</color>
+    <color name="green_coglab">#92d3eb</color>
+    <color name="green_strong_coglab">#5db6bc</color>
 </resources>

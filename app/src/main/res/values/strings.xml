@@ -39,16 +39,11 @@
     <string name="error_read_battery">An error occurred : impossible to get the battery level</string>
 
     // Bouton pour menu contextuel BCI Voyager
-    <string name="v_startVoyager">START</string>
-    // Launch splash screen
-    <string name="v_restart">Relaunch</string>
-    // Restart trial
-    <string name="v_debug">Debug</string>
-    // Debug by Hans
-    <string name="v_demo">Demo</string>
-    // Melomind demo app
-    <string name="v_quit">Quit</string>
-    // Kill app
+    <string name="v_startVoyager">START</string>  // Launch splash screen
+    <string name="v_restart">Relaunch</string>    // Restart trial
+    <string name="v_debug">Debug</string>         // Debug by Hans
+    <string name="v_demo">Demo</string>           // Melomind demo app
+    <string name="v_quit">Quit</string>           // Kill app
 
     <string name="v_ip">Adresse IP</string>
 
