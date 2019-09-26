@@ -121,13 +121,12 @@ public class ProgressActivity extends AppCompatActivity {
                             }
 
                             if (cptCapteur == 10) {
-                                Toast.makeText(ProgressActivity.this, "Test capteur ok !", Toast.LENGTH_LONG).show();
-
+                                //Toast.makeText(ProgressActivity.this, "Test capteur ok !", Toast.LENGTH_LONG).show();
                                 final Intent intent = new Intent(ProgressActivity.this, newFullscreen.class);
                                 startActivity(intent);
                                 finish();
                             }
-                            if (d.getTime() - temps > 10000) {
+                            if (d.getTime() - temps > 1000) {
                                 Toast.makeText(ProgressActivity.this, "Verifier la bonne pose des capteurs.", Toast.LENGTH_LONG).show();
                                 Intent intent = getIntent();
                                 finish();
