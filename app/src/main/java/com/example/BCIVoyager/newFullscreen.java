@@ -52,6 +52,7 @@ public class newFullscreen extends AppCompatActivity {
         isStreaming = true;
         startStream(new StreamConfig.Builder(eegListener)
                 .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
+                .useQualities()
                 .create());
 
         /**
@@ -157,7 +158,7 @@ public class newFullscreen extends AppCompatActivity {
                 //Log.i("#taille map", (keys.size() == 0)+"");
 
                 // Condition d'arret du timer
-                if (keys.size() == 0) {
+                if (keys.size() == 0 || compteur == nbFullImg) {
                     //Log.i("#STOP",  "");
 
                     t.cancel(false);
@@ -178,8 +179,8 @@ public class newFullscreen extends AppCompatActivity {
                 final Integer newImg = idImgfinal.get(randomKey);
                 // On l'enleve pour eviter de l'avoir en double
                 idImgfinal.remove(randomKey);
-                oscStream tmp = new oscStream();
-                tmp.sendOSC(randomKey);
+                //oscStream tmp = new oscStream();
+                //tmp.sendOSC(randomKey);
                 /*startStream(new StreamConfig.Builder(eegListener)
                         .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
                         .create());*/
@@ -400,8 +401,9 @@ public class newFullscreen extends AppCompatActivity {
                     // if(eegGraph!=null){
                     //addDataToGraph(mbtEEGPackets.getChannelsData(), mbtEEGPackets.getStatusData());
 
-                    oscStream appBCI = new oscStream();
-                    appBCI.execute(mbtEEGPackets);
+                    //oscStream appBCI = new oscStream();
+                    //appBCI.execute(mbtEEGPackets);
+                    new oscStream().execute(mbtEEGPackets);
 
                     //}
                 }

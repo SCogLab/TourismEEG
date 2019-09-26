@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.BCIVoyager.ProgressActivity;
 import com.example.BCIVoyager.newFullscreen;
 import com.example.myapplication.R;
 
@@ -337,7 +338,7 @@ public class Launchscreenv2 extends AppCompatActivity {
      */
     private void deinitCurrentActivity() {
         bluetoothStateListener = null;
-        final Intent intent = new Intent(Launchscreenv2.this, newFullscreen.class);
+        final Intent intent = new Intent(Launchscreenv2.this, ProgressActivity.class);
         startActivity(intent);
         finish();
     }
