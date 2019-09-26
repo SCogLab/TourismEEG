@@ -33,8 +33,8 @@ import static utils.MatrixUtils.invertFloatMatrix;
 public class oscStream extends AsyncTask<MbtEEGPacket, Void, Void>{
 
 
-    String myIP = "11.1.173.138";//"192.168.1.33";//"172.28.49.116";
-    int myPort = 6969;//5000;
+    String myIP = "172.28.49.116";//"192.168.1.33";//"172.28.49.116";
+    int myPort = 8080;//5000;
 
 
     public void sendOSC(String imgName) {
@@ -79,8 +79,7 @@ public class oscStream extends AsyncTask<MbtEEGPacket, Void, Void>{
         @Override
         protected Void doInBackground(MbtEEGPacket... mbtEEGPackets) {
 
-            melomind_headset_name = "/" + 0; // to manage distinct headset messages
-            //batLvl = battLvl;
+
             String base_address = "/Coglab";  // file will be created each day or export button pushed
 
 
@@ -165,5 +164,4 @@ public class oscStream extends AsyncTask<MbtEEGPacket, Void, Void>{
 
             return null;
         }
-
 }
