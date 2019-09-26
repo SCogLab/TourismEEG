@@ -18,6 +18,14 @@
     <string name="device_qrcode">Enter a device QR code</string>
     <string name="bluetooth_audio_streaming">Bluetooth Audio Streaming</string>
 
+    <!-- bci Voyager -->
+    <string name="osc_streaming">OSC Streaming</string>
+    <string name="filexport_streaming">Export to CSV</string>
+    <string name="P300_triggers">Triggers Activate</string>
+    <string name="bluetooth_audio_connect">Connect audio BT</string>
+    <string name="ip_address_name">Enter target ip address</string>
+    <string name="ip_port">Enter Port</string>
+
     <string name="start_streaming">Start Streaming</string>
     <string name="stop_streaming">Stop Streaming</string>
     <string name="read_battery">Get Battery Level</string>
