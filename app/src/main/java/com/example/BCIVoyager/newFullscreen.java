@@ -52,8 +52,8 @@ public class newFullscreen extends AppCompatActivity {
         isStreaming = true;
         startStream(new StreamConfig.Builder(eegListener)
                 .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
+                .useQualities()
                 .create());
-
         /**
          * Association des images avec leurs nom.
          * String : nom => permet de retrouver la catégorie
@@ -80,6 +80,8 @@ public class newFullscreen extends AppCompatActivity {
              */
             tempsAttentes[i] = (int) ((500 - 300) * Math.random() + 300);
         }
+
+        // TODO : Mettre ici la calibration
 
         /**
          * Copie de idImg car on a besoin d'une variable final pour la passer dans le Timer
@@ -157,7 +159,7 @@ public class newFullscreen extends AppCompatActivity {
                 //Log.i("#taille map", (keys.size() == 0)+"");
 
                 // Condition d'arret du timer
-                if (keys.size() == 0) {
+                if (keys.size() == 0 || compteur == nbFullImg) {
                     //Log.i("#STOP",  "");
 
                     t.cancel(false);
@@ -178,8 +180,8 @@ public class newFullscreen extends AppCompatActivity {
                 final Integer newImg = idImgfinal.get(randomKey);
                 // On l'enleve pour eviter de l'avoir en double
                 idImgfinal.remove(randomKey);
-                oscStream tmp = new oscStream();
-                tmp.sendOSC(randomKey);
+                //oscStream tmp = new oscStream();
+                //tmp.sendOSC(randomKey);
                 /*startStream(new StreamConfig.Builder(eegListener)
                         .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
                         .create());*/
@@ -367,6 +369,8 @@ public class newFullscreen extends AppCompatActivity {
      * Listener used to retrieve the EEG raw data when a streaming is in progress
      */
     private EegListener<BaseError> eegListener;
+
+
     private void initEegListener() {
         eegListener = new EegListener<BaseError>() {
             /**
@@ -397,13 +401,8 @@ public class newFullscreen extends AppCompatActivity {
                     mbtEEGPackets.setChannelsData(invertFloatMatrix(mbtEEGPackets.getChannelsData()));
 
                 if(isStreaming){
-                    // if(eegGraph!=null){
-                    //addDataToGraph(mbtEEGPackets.getChannelsData(), mbtEEGPackets.getStatusData());
+                    new oscStream().execute(mbtEEGPackets);
 
-                    oscStream appBCI = new oscStream();
-                    appBCI.execute(mbtEEGPackets);
-
-                    //}
                 }
             }
         };
