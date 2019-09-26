@@ -16,7 +16,7 @@ public class BCIVoyager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button b = findViewById(R.id.v_start);
+        Button b = findViewById(R.id.c_start);
 
         b.setOnClickListener(view ->  {
 

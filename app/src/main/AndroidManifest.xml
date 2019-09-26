@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.example.Launchscreenv2"></activity>
+        <activity android:name="com.example.BCIVoyager.ProgressActivity"></activity>
+
         <activity
             android:name="Voyager.Launchscreen"
             android:screenOrientation="landscape"
