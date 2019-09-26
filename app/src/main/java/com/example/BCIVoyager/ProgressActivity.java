@@ -15,17 +15,13 @@ import features.MbtFeatures;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.Launchscreenv2;
 import com.example.myapplication.R;
 
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 import static utils.AsyncUtils.executeAsync;
-import static utils.MatrixUtils.invertFloatMatrix;
 
 public class ProgressActivity extends AppCompatActivity {
 
@@ -122,7 +118,7 @@ public class ProgressActivity extends AppCompatActivity {
 
                             if (cptCapteur == 10) {
                                 //Toast.makeText(ProgressActivity.this, "Test capteur ok !", Toast.LENGTH_LONG).show();
-                                final Intent intent = new Intent(ProgressActivity.this, newFullscreen.class);
+                                final Intent intent = new Intent(ProgressActivity.this, Activity_Images.class);
                                 startActivity(intent);
                                 finish();
                             }

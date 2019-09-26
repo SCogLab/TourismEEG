@@ -38,11 +38,11 @@ import features.MbtFeatures;
 
 import static utils.MatrixUtils.invertFloatMatrix;
 
-public class newFullscreen extends AppCompatActivity {
+public class Activity_Images extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.demo_fullscreen);
+        setContentView(R.layout.activity_Images);
 
         initConnectionStateListener();
         initEegListener();
@@ -159,6 +159,7 @@ public class newFullscreen extends AppCompatActivity {
 
                 // Condition d'arret du timer
                 if (keys.size() == 0 || compteur == nbFullImg) {
+                    //TODO Compteur a envoyer
                     //Log.i("#STOP",  "");
 
                     t.cancel(false);
@@ -179,7 +180,7 @@ public class newFullscreen extends AppCompatActivity {
                 final Integer newImg = idImgfinal.get(randomKey);
                 // On l'enleve pour eviter de l'avoir en double
                 idImgfinal.remove(randomKey);
-                //oscStream tmp = new oscStream();
+                //Class_oscStream tmp = new Class_oscStream();
                 //tmp.sendOSC(randomKey);
                 /*startStream(new StreamConfig.Builder(eegListener)
                         .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
@@ -375,7 +376,7 @@ public class newFullscreen extends AppCompatActivity {
              */
             @Override
             public void onError(BaseError error, String additionnalInfo) {
-                Toast.makeText(newFullscreen.this, error.getMessage()+ (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_Images.this, error.getMessage() + (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_SHORT).show();
                 if(isStreaming) {
                     stopStream();
                     //updateStreaming();
@@ -401,9 +402,9 @@ public class newFullscreen extends AppCompatActivity {
                     // if(eegGraph!=null){
                     //addDataToGraph(mbtEEGPackets.getChannelsData(), mbtEEGPackets.getStatusData());
 
-                    //oscStream appBCI = new oscStream();
+                    //Class_oscStream appBCI = new Class_oscStream();
                     //appBCI.execute(mbtEEGPackets);
-                    new oscStream().execute(mbtEEGPackets);
+                    new Class_oscStream().execute(mbtEEGPackets);
 
                     //}
                 }
@@ -469,7 +470,7 @@ public class newFullscreen extends AppCompatActivity {
         eegListener = null;
         bluetoothStateListener = null;
         finish();
-        Intent intent = new Intent(newFullscreen.this, Launchscreen.class);
+        Intent intent = new Intent(Activity_Images.this, Launchscreen.class);
         //intent.putExtra(HomeActivity.PREVIOUS_ACTIVITY_EXTRA, BCIVoyageur_Fullscreen.TAG);
         startActivity(intent);
         finish();

@@ -1,6 +1,5 @@
 package com.example;
 
-import Voyager.Launchscreen;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import config.ConnectionConfig;
@@ -24,7 +23,6 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.BCIVoyager.ProgressActivity;
-import com.example.BCIVoyager.newFullscreen;
 import com.example.myapplication.R;
 
 import static features.MbtFeatures.MELOMIND_DEVICE_NAME_PREFIX;

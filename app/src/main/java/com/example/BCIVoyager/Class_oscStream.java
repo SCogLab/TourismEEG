@@ -30,7 +30,7 @@ import core.eeg.storage.MbtEEGPacket;
 
 import static utils.MatrixUtils.invertFloatMatrix;
 
-public class oscStream extends AsyncTask<MbtEEGPacket, Void, Void>{
+public class Class_oscStream extends AsyncTask<MbtEEGPacket, Void, Void> {
 
 
     String myIP = "172.28.49.116";//"192.168.1.33";//"172.28.49.116";
@@ -68,12 +68,12 @@ public class oscStream extends AsyncTask<MbtEEGPacket, Void, Void>{
          * @param deviceName
          */
 
-        oscStream(String deviceName, String battLvl) {
+        Class_oscStream(String deviceName, String battLvl) {
             melomind_headset_name = "/"+ deviceName; // to manage distinct headset messages
             batLvl = battLvl;
         }
 
-    oscStream() {
+    Class_oscStream() {
     }
 
         @Override

@@ -21,7 +21,7 @@ public class BCIVoyager extends AppCompatActivity {
         b.setOnClickListener(view ->  {
 
             Log.i("t", "Change activity");
-            Intent myIntent = new Intent(getBaseContext(), newFullscreen.class);
+            Intent myIntent = new Intent(getBaseContext(), Activity_Images.class);
             startActivityForResult(myIntent, 0);
         });
     }
