@@ -42,7 +42,7 @@ public class Activity_Images extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_Images);
+        setContentView(R.layout.activity_images);
 
         initConnectionStateListener();
         initEegListener();
@@ -54,6 +54,11 @@ public class Activity_Images extends AppCompatActivity {
                 .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
                 .useQualities()
                 .create());
+
+
+        EEGExport csv = new EEGExport();
+        csv.createCSV("name.csv");
+
 
         /**
          * Association des images avec leurs nom.

@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.BCIVoyager.newFullscreen;
+import com.example.BCIVoyager.Activity_Images;
 import com.example.myapplication.R;
 
 import core.bluetooth.BtState;
@@ -249,7 +249,7 @@ public class DemoSDK extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activitydemo_sdk);
 
         toast = Toast.makeText(DemoSDK.this, "", Toast.LENGTH_LONG);
         sdkClient = MbtClient.init(getApplicationContext());
@@ -451,7 +451,7 @@ public class DemoSDK extends AppCompatActivity{
      */
     private void deinitCurrentActivity(){
         bluetoothStateListener = null;
-        final Intent intent = new Intent(DemoSDK.this, newFullscreen.class);
+        final Intent intent = new Intent(DemoSDK.this, Activity_Images.class);
         startActivity(intent);
         finish();
     }
