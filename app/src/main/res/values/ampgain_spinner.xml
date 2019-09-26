@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ampgain_array">
+     <item>x4</item>
+     <item>x6</item>
+     <item>x8</item>
+     <item>x12</item>
+    </string-array>
+</resources>
