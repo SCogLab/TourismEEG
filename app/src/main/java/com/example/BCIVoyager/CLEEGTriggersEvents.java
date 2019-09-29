@@ -1,8 +1,7 @@
 package com.example.BCIVoyager;
 
 import android.os.AsyncTask;
-import android.support.annotation.Keep;
-import android.support.annotation.NonNull;
+import androidx.annotation.*;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example;
+package com.example.BCIVoyager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,55 +22,24 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.BCIVoyager.ProgressActivity;
-import com.example.myapplication.R;
+//import com.example.myapplication.R;
 
 import static features.MbtFeatures.MELOMIND_DEVICE_NAME_PREFIX;
 import static features.MbtFeatures.QR_CODE_NAME_PREFIX;
 
-public class Launchscreenv2 extends AppCompatActivity {
+public class Activity2Connexion extends AppCompatActivity {
 
+    private final static int SCAN_DURATION = 20000; //Maximum duration allocated to find a headset
+    public final static String PREVIOUS_ACTIVITY_EXTRA = "PREVIOUS_ACTIVITY_EXTRA"; //Extra key used to share data to the next started activity
+    private MbtClient sdkClient; //Instance of SDK client used to access all the SDK features
+    private String deviceNameField; //Device name field used to enter a specific headset name on the application for Bluetooth connection
+    private String deviceName; //Device name value stored from the value of the {link HomeActivity#deviceNameField}
+    private String deviceQrCodeField; //Device QR code field used to enter a specific headset QR code on the application for Bluetooth connection
+    private String deviceQrCode; //Device QR code value stored from the value of the {link HomeActivity#deviceQrCodeField}
+    private Switch connectAudioSwitch; //Switch used to enable or disable Bluetooth audio connection.
 
-    /**
-     * Maximum duration allocated to find a headset
-     */
-    private final static int SCAN_DURATION = 20000;
-
-    /**
-     * Extra key used to share data to the next started activity
-     */
-    public final static String PREVIOUS_ACTIVITY_EXTRA = "PREVIOUS_ACTIVITY_EXTRA";
-
-    /**
-     * Instance of SDK client used to access all the SDK features
-     */
-    private MbtClient sdkClient;
-
-    /**
-     * Device name field used to enter a specific headset name on the application for Bluetooth connection
-     */
-    private String deviceNameField;
-
-    /**
-     * Device name value stored from the value of the {link HomeActivity#deviceNameField}
-     */
-    private String deviceName;
-
-    /**
-     * Device QR code field used to enter a specific headset QR code on the application for Bluetooth connection
-     */
-    private String deviceQrCodeField;
-
-    /**
-     * Device QR code value stored from the value of the {link HomeActivity#deviceQrCodeField}
-     */
-    private String deviceQrCode;
-
-
-    /**
-     * Switch used to enable or disable Bluetooth audio connection.
-     */
-    private Switch connectAudioSwitch;
+    private Toast toast; //Toast used to notify the user by displaying a temporary message on the foreground of the screen
+    private Button scanButton; //Button used to initiate the Bluetooth connection with a Melomind headset on click
 
     /**
      * Boolean value stored from the value of the {link HomeActivity#connectAudioSwitch} :
@@ -78,11 +47,6 @@ public class Launchscreenv2 extends AppCompatActivity {
      * Audio Bluetooth connection is disabled if {link HomeActivity#connectAudio} is false.
      */
     private boolean connectAudio = false;
-
-    /**
-     * Button used to initiate the Bluetooth connection with a Melomind headset on click
-     */
-    private Button scanButton;
 
     /**
      * Boolean value stored for Bluetooth connection cancel :
@@ -96,11 +60,6 @@ public class Launchscreenv2 extends AppCompatActivity {
      * A Bluetooth connection in progress can be cancelled by the SDK if it returns an error
      */
     private boolean isErrorRaised = false;
-
-    /**
-     * Toast used to notify the user by displaying a temporary message on the foreground of the screen
-     */
-    private Toast toast;
 
     /**
      * Listener used to receive a notification when the Bluetooth connection state changes
@@ -138,7 +97,7 @@ public class Launchscreenv2 extends AppCompatActivity {
         public void onError(BaseError error, String additionnalInfo) {
             isErrorRaised = true;
             updateScanning(false);
-            toast = Toast.makeText(Launchscreenv2.this, error.getMessage() + (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_LONG);
+            toast = Toast.makeText(Activity2Connexion.this, error.getMessage() + (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_LONG);
             toast.show();
         }
 
@@ -194,11 +153,11 @@ public class Launchscreenv2 extends AppCompatActivity {
         sdkClient = MbtClient.init(getApplicationContext());
         isCancelled = false;
 
-        if (getIntent().hasExtra(Launchscreenv2.PREVIOUS_ACTIVITY_EXTRA)) {
-            if (getIntent().getStringExtra(Launchscreenv2.PREVIOUS_ACTIVITY_EXTRA) != null)
+        if (getIntent().hasExtra(Activity2Connexion.PREVIOUS_ACTIVITY_EXTRA)) {
+            if (getIntent().getStringExtra(Activity2Connexion.PREVIOUS_ACTIVITY_EXTRA) != null)
                 sdkClient.setConnectionStateListener(bluetoothStateListener);
         }
-        toast = Toast.makeText(Launchscreenv2.this, "", Toast.LENGTH_LONG);
+        toast = Toast.makeText(Activity2Connexion.this, "", Toast.LENGTH_LONG);
 
         //initToolBar();
         //initDeviceNameField();
@@ -250,7 +209,7 @@ public class Launchscreenv2 extends AppCompatActivity {
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
         if (!hasPermissions(getApplicationContext(), PERMISSIONS))
-            ActivityCompat.requestPermissions(Launchscreenv2.this, PERMISSIONS, PERMISSION_ALL);
+            ActivityCompat.requestPermissions(Activity2Connexion.this, PERMISSIONS, PERMISSION_ALL);
     }
 
     /**
@@ -336,7 +295,7 @@ public class Launchscreenv2 extends AppCompatActivity {
      */
     private void deinitCurrentActivity() {
         bluetoothStateListener = null;
-        final Intent intent = new Intent(Launchscreenv2.this, ProgressActivity.class);
+        final Intent intent = new Intent(Activity2Connexion.this, Activity3Calibration.class);
         startActivity(intent);
         finish();
     }

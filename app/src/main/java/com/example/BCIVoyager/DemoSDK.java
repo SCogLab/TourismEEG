@@ -1,4 +1,4 @@
-package Melomind;
+package com.example.BCIVoyager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,8 +24,7 @@ import java.util.Arrays;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.BCIVoyager.Activity_Images;
-import com.example.myapplication.R;
+//import com.example.myapplication.R;
 
 import core.bluetooth.BtState;
 import config.ConnectionConfig;
@@ -451,7 +450,7 @@ public class DemoSDK extends AppCompatActivity{
      */
     private void deinitCurrentActivity(){
         bluetoothStateListener = null;
-        final Intent intent = new Intent(DemoSDK.this, Activity_Images.class);
+        final Intent intent = new Intent(DemoSDK.this, Activity5Images.class);
         startActivity(intent);
         finish();
     }

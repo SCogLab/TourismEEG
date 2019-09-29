@@ -1,18 +1,13 @@
-package Voyager;
+package com.example.BCIVoyager;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-
+import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.example.myapplication.R;
 
 
-public class Launchscreen extends Activity {
+public class ActivitySettings extends AppCompatActivity {
 
     /*private final String btn_touch = getResources().getString(R.string.v_startVoyager);
     private final String btn_start = getResources().getString(R.string.v_startVoyager);
@@ -20,7 +15,7 @@ public class Launchscreen extends Activity {
     private final String btn_debug = getResources().getString(R.string.v_debug);
     private final String btn_quit = getResources().getString(R.string.v_quit);*/
 
-    Button btn_touch = null;
+    /*Button btn_touch = null;
     Button btn_start = null;
     Button btn_relaunch = null;
     Button btn_debug = null;
@@ -28,39 +23,45 @@ public class Launchscreen extends Activity {
     Button btn_next = null;
     EditText txt_ip = null;
     EditText txt_port = null;
+    TextView text = null;*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity4_launchxp);
+        setContentView(R.layout.activity_settings);
 
-        // On récupère toutes les vues dont on a besoin
-        btn_next = (Button)findViewById(R.id.c_start);
-        btn_debug = (Button)findViewById(R.id.c_demo);
+        Button btn_start = findViewById(R.id.c_start);
+        Button btn_debug = findViewById(R.id.c_demo);
 
-        // On attribue un listener adapté aux vues qui en ont besoin
-        btn_relaunch.setOnClickListener(razListener);
-        txt_ip.addTextChangedListener(textWatcher);
-        txt_port.addTextChangedListener(textWatcher);
-        btn_next.setOnClickListener(envoyerListener);
+        btn_debug.setOnClickListener(view ->  {
+            Log.i("t", "Change activity");
+            Intent myIntent = new Intent(getBaseContext(), DemoSDK.class);
+            startActivityForResult(myIntent, 0);
+        });
 
-
+        btn_start.setOnClickListener(view ->  {
+            Log.i("t", "Change activity");
+            Intent myIntent = new Intent(getBaseContext(), Activity2Connexion.class);
+            startActivityForResult(myIntent, 0);
+        });
 
         //setContentView(R.layout.activity_premiere_activite);
         //String applicationName = getResources().getString(R.string.app_name);
-        String applicationName = getResources().getString(R.string.app_name);
-        TextView text = new TextView(this);
-        text.setText(R.string.welcomeMsg);
-        setContentView(text);
+        //String applicationName = getResources().getString(R.string.app_name);
+        //TextView text = new TextView(this);
+        //text = new TextView(this);
+        //text.setText(R.string.welcomeMsg);
+        //setContentView(text);
 
         /*EditText editText = new EditText(this);
         editText.setHint(R.string.editText);
         editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         editText.setLines(5);*/
         // ATTENTION: This was auto-generated to handle app links.
-        Intent appLinkIntent = getIntent();
+        /*Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
-        Uri appLinkData = appLinkIntent.getData();
+        Uri appLinkData = appLinkIntent.getData();*/
     }
 
 

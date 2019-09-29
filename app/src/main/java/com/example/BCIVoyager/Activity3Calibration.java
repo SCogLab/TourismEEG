@@ -1,6 +1,5 @@
 package com.example.BCIVoyager;
 
-import Voyager.Launchscreen;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import config.StreamConfig;
@@ -11,30 +10,26 @@ import engine.clientevents.BaseError;
 import engine.clientevents.BluetoothStateListener;
 import engine.clientevents.EegListener;
 import features.MbtFeatures;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.example.myapplication.R;
-
 import java.util.Date;
 
 import static utils.AsyncUtils.executeAsync;
 
-public class ProgressActivity extends AppCompatActivity {
+public class Activity3Calibration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity3_calibration);
         //ProgressBar pb = findViewById(R.id.progressBar);
-        Toast.makeText(ProgressActivity.this, "Test capteurs en cours...", Toast.LENGTH_LONG).show();
+        Toast.makeText(Activity3Calibration.this, "Test capteurs en cours...", Toast.LENGTH_LONG).show();
 
         initConnectionStateListener();
         initEegListener();
-        Log.d("1", "ProgressActivity");
+        Log.d("1", "Activity3Calibration");
         sdkClient = MbtClient.getClientInstance();
         sdkClient.setConnectionStateListener(bluetoothStateListener);
         isStreaming = true;
@@ -42,7 +37,6 @@ public class ProgressActivity extends AppCompatActivity {
                 .setNotificationPeriod(MbtFeatures.DEFAULT_CLIENT_NOTIFICATION_PERIOD)
                 .useQualities()
                 .create());
-
     }
 
     /**
@@ -73,7 +67,7 @@ public class ProgressActivity extends AppCompatActivity {
              */
             @Override
             public void onError(BaseError error, String additionnalInfo) {
-                Toast.makeText(ProgressActivity.this, error.getMessage() + (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity3Calibration.this, error.getMessage() + (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_SHORT).show();
                 if (isStreaming) {
                     stopStream();
                     //updateStreaming();
@@ -95,7 +89,7 @@ public class ProgressActivity extends AppCompatActivity {
                 //if(invertFloatMatrix(mbtEEGPackets.getChannelsData()) != null)
                 //mbtEEGPackets.setChannelsData(invertFloatMatrix(mbtEEGPackets.getChannelsData()));
 
-                Log.d("newActivity", "ProgressActivity");
+                Log.d("newActivity", "Activity3Calibration");
                 //int cpt = 0;
                 if (isStreaming) {
                     executeAsync(new Runnable() {
@@ -108,22 +102,22 @@ public class ProgressActivity extends AppCompatActivity {
                             Log.d("tag", "");
                             if (p3 >= 0.5 || p4 >= 0.5) {
                                 cptCapteur = cptCapteur + 1;
-                                Log.e("ProgressActivity", "cpt++");
+                                Log.e("Activity3Calibration", "cpt++");
 
                             } else {
-                                Log.e("ProgressActivity", "cpt --");
+                                Log.e("Activity3Calibration", "cpt --");
                                 if (cptCapteur > 0)
                                     cptCapteur--;
                             }
 
                             if (cptCapteur == 10) {
-                                //Toast.makeText(ProgressActivity.this, "Test capteur ok !", Toast.LENGTH_LONG).show();
-                                final Intent intent = new Intent(ProgressActivity.this, Activity_Images.class);
+                                //Toast.makeText(Activity3Calibration.this, "Test capteur ok !", Toast.LENGTH_LONG).show();
+                                final Intent intent = new Intent(Activity3Calibration.this, Activity4LaunchXP.class);
                                 startActivity(intent);
                                 finish();
                             }
                             if (d.getTime() - temps > 1000) {
-                                Toast.makeText(ProgressActivity.this, "Verifier la bonne pose des capteurs.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Activity3Calibration.this, "Verifier la bonne pose des capteurs.", Toast.LENGTH_LONG).show();
                                 Intent intent = getIntent();
                                 finish();
                                 startActivity(intent);
@@ -218,7 +212,7 @@ public class ProgressActivity extends AppCompatActivity {
         eegListener = null;
         bluetoothStateListener = null;
         finish();
-        Intent intent = new Intent(ProgressActivity.this, Launchscreen.class);
+        Intent intent = new Intent(Activity3Calibration.this, ActivitySettings.class);
         //intent.putExtra(HomeActivity.PREVIOUS_ACTIVITY_EXTRA, BCIVoyageur_Fullscreen.TAG);
         startActivity(intent);
         finish();

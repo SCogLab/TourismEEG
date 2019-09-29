@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:screenOrientation="landscape"
     android:background="@color/black_overlay"
-    tools:context="com.example.BCIVoyager.BCIVoyager"
+    tools:context="com.example.BCIVoyager.Activity1Launchscreen"
     android:id="@+id/start_xp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="40dip"
-        android:text="@string/result"
+        android:text="@string/t_result"
         android:textSize="25sp"
         android:gravity="center"
         android:textColor="@color/white" />

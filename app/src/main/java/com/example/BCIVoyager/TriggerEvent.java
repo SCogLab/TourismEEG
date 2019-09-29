@@ -1,6 +1,6 @@
 package com.example.BCIVoyager;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

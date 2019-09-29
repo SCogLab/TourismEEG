@@ -6,59 +6,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:screenOrientation="landscape"
     android:background="@color/green_strong_coglab"
-    tools:context="Voyager.Launchscreen"
     android:id="@+id/startViaLaunchscreen">
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dip"
         android:text="@string/welcomeMsg"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:gravity="center"
         android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/pjtname"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textSize="55sp"
-        android:gravity="center"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/refCogLab"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/refcoglab"
-        android:textSize="30sp"
+        android:textSize="77sp"
         android:gravity="center"
         android:textColor="@color/white" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="15dip"
         android:layout_marginTop="15dip"
         app:srcCompat="@drawable/coglab_transparent" />
 
+    <TextView
+        android:id="@+id/refCogLab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/refcoglab"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dip"
         android:orientation="horizontal"
         android:gravity="center">
 
         <Button
             android:id="@+id/c_start"
-            android:layout_width="240dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="15dip"
-            android:layout_marginRight="15dip"
+            android:layout_margin="15dip"
             android:text="@string/v_startVoyager"
             android:background="@color/light_blue"
             android:textColor="@color/white"
@@ -66,11 +66,22 @@
 
         <Button
             android:id="@+id/c_demo"
-            android:layout_width="240dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="@string/v_demo"
-            android:layout_marginLeft="15dip"
-            android:layout_marginRight="15dip"
+            android:layout_margin="15dip"
+            android:background="@color/light_blue"
+            android:elevation="20dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:contextClickable="@tools:sample/full_names"/>
+
+        <Button
+            android:id="@+id/c_setting"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="@string/v_settings"
+            android:layout_margin="15dip"
             android:background="@color/light_blue"
             android:elevation="20dp"
             android:textColor="@color/white"
@@ -88,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/with"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:gravity="center"
             android:textColor="@color/white" />
 
@@ -97,7 +108,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="10dip"
-            app:srcCompat="@drawable/Logo_Melomind_mini" />
+            app:srcCompat="@drawable/logo_melomind_mini" />
 
         <TextView
             android:id="@+id/partner"
@@ -105,7 +116,7 @@
             android:layout_height="100dp"
             android:text="@string/partner"
             android:layout_marginLeft="100dip"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:gravity="center"
             android:textColor="@color/white" />
 
@@ -113,7 +124,7 @@
             android:id="@+id/logo_iftm"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            app:srcCompat="@drawable/logo_IFTM" />
+            app:srcCompat="@drawable/logo_iftm" />
 
     </LinearLayout>
 </LinearLayout>

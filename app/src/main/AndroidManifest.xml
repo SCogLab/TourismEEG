@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.example.BCIVoyager">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,19 +11,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.Launchscreenv2"></activity>
-        <activity android:name="com.example.BCIVoyager.ProgressActivity"></activity>
+
+        <activity android:name="com.example.BCIVoyager.BCIVoyager"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.Activity2Connexion"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.Activity3Calibration"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.Activity4LaunchXP"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.Activity5Images"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.Activity6Results"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.ActivitySettings"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.DemoSDK"
+            android:screenOrientation="landscape">
+        </activity>
 
         <activity
-            android:name="Voyager.Launchscreen"
+            android:name=".Activity1Launchscreen"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data
                     android:host="coglab.fr"
                     android:scheme="http" />
@@ -29,6 +61,5 @@
         </activity>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -1,204 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:screenOrientation="landscape"
+    android:orientation="vertical"
+    android:background="@color/black_overlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Elements-->
     <TextView
         android:id="@+id/titleConnect"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/light_blue"
-        android:gravity="bottom|center_horizontal"
-        android:text="@string/connected"
+        android:gravity="center"
+        android:text="@string/t_setting"
         android:textColor="@color/white"
-        android:textSize="18sp"
-
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomTitle"
         app:layout_constraintTop_toTopOf="parent" />
-    <!-- Switches-->
 
-    <Switch android:id="@+id/checkbox_oscstreaming"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/osc_streaming"
-        android:onClick="onCheckboxClicked"
+        android:layout_marginTop="20dip">
 
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp1"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-        />
+        <LinearLayout
+            android:layout_width="300dip"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Switch android:id="@+id/checkbox_fileexport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/filexport_streaming"
-        android:onClick="onCheckboxClicked"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp1"/>
+            <Switch android:id="@+id/checkbox_oscstreaming"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:text="@string/osc_streaming"
+                android:textColor="@color/white"
+                android:onClick="onCheckboxClicked"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp1"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
+                />
 
-    <Switch android:id="@+id/checkbox_P300"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/P300_triggers"
-        android:onClick="onCheckboxClicked"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp2"/>
+            <Switch android:id="@+id/checkbox_fileexport"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:text="@string/filexport_streaming"
+                android:textColor="@color/white"
+                android:onClick="onCheckboxClicked"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp1"/>
 
-    <Switch android:id="@+id/checkbox_audiobt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bluetooth_audio_connect"
-        android:onClick="onCheckboxClicked"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp2"/>
+            <Switch android:id="@+id/checkbox_P300"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:textColor="@color/white"
+                android:text="@string/P300_triggers"
+                android:onClick="onCheckboxClicked"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp2"/>
 
-    <Switch android:id="@+id/checkbox_qualities"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/qualities"
-        android:onClick="onCheckboxClicked"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp3"/>
+            <Switch android:id="@+id/checkbox_audiobt"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:textColor="@color/white"
+                android:text="@string/bluetooth_audio_connect"
+                android:onClick="onCheckboxClicked"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp2"/>
 
-    <Switch android:id="@+id/switch_filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Activate Filter"
+            <Switch android:id="@+id/checkbox_qualities"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:textColor="@color/white"
+                android:text="Qualities"
+                android:onClick="onCheckboxClicked"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp3"/>
 
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp3"/>
-        />
+            <Switch android:id="@+id/switch_filter"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:textColor="@color/white"
+                android:text="Activate Filter"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp3"/>
 
-    <Switch android:id="@+id/switch_gain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Activate Gain"
+            <Switch android:id="@+id/switch_gain"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:textColor="@color/white"
+                android:text="Activate Gain"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp4"/>
+        </LinearLayout>
 
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp4"/>
-    />
-    <!-- SPINNER-->
-    <Spinner
-        android:id="@+id/bandpassfilter_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/filter_array"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp3"/>
-        />
+        <LinearLayout
+            android:layout_width="300dip"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/ampgain_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/ampgain_array"
+            <Spinner
+                android:id="@+id/bandpassfilter_spinner"
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:textColor="@color/white"
+                android:entries="@array/filter_array"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp3"/>
 
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp4"/>
-        />
+            <Spinner
+                android:id="@+id/ampgain_spinner"
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:textColor="@color/white"
+                android:entries="@array/ampgain_array"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp4"/>
 
-    <!--Network selection-->
+            <!--Network selection-->
 
-    <!-- user inputs : osc_ip_address, osc_port_address, sample_rate value-->
-    <EditText
-        android:id="@+id/osc_IPAddressField"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:singleLine="true"
-        android:hint="@string/ip_address_name"
-        android:textSize="12sp"
-        android:inputType="number|numberDecimal"
-        android:digits="0123456789."
+            <!-- user inputs : osc_ip_address, osc_port_address, sample_rate value-->
+            <EditText
+                android:id="@+id/osc_IPAddressField"
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:singleLine="true"
+                android:hint="@string/ip_address_name"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:inputType="number|numberDecimal"
+                android:digits="0123456789."
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp1"/>
 
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp1"/>
-        />
+            <EditText
+                android:id="@+id/osc_PortAddressField"
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:singleLine="true"
+                android:hint="@string/ip_port"
+                android:inputType="number"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp1"/>
 
-    <EditText
-        android:id="@+id/osc_PortAddressField"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:singleLine="true"
-        android:hint="@string/ip_port"
-        android:inputType="number"
-        android:textSize="12sp"
+            <!-- Triggers Notes-->
+            <EditText
+                android:id="@+id/triggers_experimenter_notes"
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:inputType="textMultiLine"
+                android:hint="Enter Experimenter notes"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp2"/>
 
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp1"/>
-        />
+            <!-- Quality Values-->
+            <EditText
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:hint="Qualities Values"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp3"/>
 
-    <!-- Triggers Notes-->
-    <EditText
-        android:id="@+id/triggers_experimenter_notes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:hint="Enter Experimenter notes"
-        android:textSize="12sp"
+        </LinearLayout>
 
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp2"/>
+        <LinearLayout
+            android:layout_width="300dip"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    />
+            <Button
+                android:id="@+id/startStopStreamingButton"
+                style="@style/Base.Widget.AppCompat.Button.Small"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:text="@string/start_streaming"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="@+id/guidelineBottomChannels"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineBottomStartStop"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartLeftBottom"
+                app:layout_constraintRight_toRightOf="@+id/guidelineEndBottomLeft" />
 
-    <!-- Quality Values-->
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:textSize="12sp"
-        android:hint="Qualities Values"
+            <Button
+                android:id="@+id/readBatteryButton"
+                style="@style/Base.Widget.AppCompat.Button.Small"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:text="@string/read_battery"
+                android:textColor="@color/white"
+                android:textSize="12sp"
 
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp3"/>
+                app:layout_constraintTop_toTopOf="@+id/guidelineBottomChannels"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineBottomStartStop"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightBottom"
+                app:layout_constraintRight_toRightOf="@+id/guidelineEndRightBottom"
+                />
 
-    />
+        </LinearLayout>
+
+    </LinearLayout>
     <!-- GRAPH-->
+
 
     <com.github.mikephil.charting.charts.LineChart
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="220dp"
         android:id="@+id/eegGraph"
-
         app:layout_constraintTop_toBottomOf="@id/guidelineBottomProp4"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
         app:layout_constraintBottom_toBottomOf="@id/guidelineBottomChannels" />
 
-    <!--Buttons-->
 
-    <Button
-        android:id="@+id/startStopStreamingButton"
-        style="@style/Base.Widget.AppCompat.Button.Small"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/start_streaming"
-        android:textColor="@color/white"
-
-        android:textSize="12sp"
-        app:layout_constraintTop_toTopOf="@+id/guidelineBottomChannels"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineBottomStartStop"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartLeftBottom"
-        app:layout_constraintRight_toRightOf="@+id/guidelineEndBottomLeft"
-        />
-
-    <Button
-        android:id="@+id/readBatteryButton"
-        style="@style/Base.Widget.AppCompat.Button.Small"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/read_battery"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-
-        app:layout_constraintTop_toTopOf="@+id/guidelineBottomChannels"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineBottomStartStop"
-        app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightBottom"
-        app:layout_constraintRight_toRightOf="@+id/guidelineEndRightBottom"
-        />
 
     <!-- VERTICAL GUIDELINES-->
 
@@ -339,4 +356,4 @@
         android:orientation="horizontal"
         custom:layout_constraintGuide_percent="0.99" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -1,17 +1,12 @@
 package com.example.BCIVoyager;
 
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.myapplication.R;
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,7 +19,6 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import Voyager.Launchscreen;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import config.StreamConfig;
@@ -38,7 +32,7 @@ import features.MbtFeatures;
 
 import static utils.MatrixUtils.invertFloatMatrix;
 
-public class Activity_Images extends AppCompatActivity {
+public class Activity5Images extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,7 +166,7 @@ public class Activity_Images extends AppCompatActivity {
                     Date date = new Date();
                     Log.i("Date", date.toString());
                     // Permet de changer d'activity = factultatif
-                    //Intent myIntent = new Intent(getBaseContext(), BCIVoyager.class);
+                    //Intent myIntent = new Intent(getBaseContext(), Activity1Launchscreen.class);
                     //startActivityForResult(myIntent, 0);
                 }
                 /*
@@ -381,7 +375,7 @@ public class Activity_Images extends AppCompatActivity {
              */
             @Override
             public void onError(BaseError error, String additionnalInfo) {
-                Toast.makeText(Activity_Images.this, error.getMessage() + (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity5Images.this, error.getMessage() + (additionnalInfo != null ? additionnalInfo : ""), Toast.LENGTH_SHORT).show();
                 if(isStreaming) {
                     stopStream();
                     //updateStreaming();
@@ -475,7 +469,7 @@ public class Activity_Images extends AppCompatActivity {
         eegListener = null;
         bluetoothStateListener = null;
         finish();
-        Intent intent = new Intent(Activity_Images.this, Launchscreen.class);
+        Intent intent = new Intent(Activity5Images.this, ActivitySettings.class);
         //intent.putExtra(HomeActivity.PREVIOUS_ACTIVITY_EXTRA, BCIVoyageur_Fullscreen.TAG);
         startActivity(intent);
         finish();

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    tools:context="com.example.BCIVoyager.Activity_Images"
-    android:screenOrientation="landscape">
+    android:screenOrientation="landscape"
+    android:background="@color/black_dark"
+    tools:context="com.example.BCIVoyager.Activity5Images">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -15,9 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
-
-
-
     </FrameLayout>
 
     <!-- This FrameLayout insets its children based on system windows using
@@ -27,9 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="..."
-        android:textColor="#FFFFFF"
-        android:textSize="200px" />
+        android:text="@string/d_point"
+        android:textColor="@color/white"
+        android:textSize="220sp" />
+
     <TextView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
@@ -37,14 +35,14 @@
         android:gravity="center"
         android:keepScreenOn="true"
         android:text=""
-        android:textColor="#33b5e5"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="281dp"
-        android:layout_height="207dp"
+        android:layout_width="370dp"
+        android:layout_height="270dp"
         android:layout_gravity="center"
         tools:srcCompat="@tools:sample/avatars" />
 

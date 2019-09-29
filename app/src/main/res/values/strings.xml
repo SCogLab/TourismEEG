@@ -53,23 +53,38 @@
     <string name="v_demo">Demo</string>           // Melomind demo app
     <string name="v_quit">Quit</string>           // Kill app
 
+    <string name="v_settings">Settings</string>   // Renvoi vers la page de paramètres
     <string name="v_ip">Adresse IP</string>
+
+
+    <string name="qualities"></string>
 
     // Text app BCI Voyager
 
-    //Launchsreen (activity1)
+    //Launchscreen (activity1)
     <string name="welcomeMsg">"Bonjour et bienvenue dans l'expérience"</string>
     <string name="refcoglab">"by CogLab, NeuroTechX Paris"</string>
     <string name="with">"avec"</string>
     <string name="partner">"Partenaires"</string>
 
+    //Connexion (activity2)
+    <string name="t_connect">"Connexion"</string>
+    <string name="d_point">" . . . "</string>
+
+    //Calibration (activity3)
+    <string name="t_calibration">"Calibration"</string>
+    <string name="demarrer">"Démarrer"</string>
+
     //Lancement de l'expérience (activity4)
-    <string name="launch">"Launch"</string>
-    <string name="look">"Look at this pictures"</string>
+    <string name="t_launch">"Launch"</string>
+    <string name="look">"Look carefully at the following images"</string>
 
     //Page de résultats
-    <string name="result">"Results"</string>
+    <string name="t_result">"Results"</string>
     <string name="txt_thx">"Merci, l’expérience est terminée !"</string>
     <string name="txt_disc_result">"Découvrons vos résultats :"</string>
+
+    //Page de paramètres
+    <string name="t_setting">"BCI Voyager Settings"</string>
 
 </resources>
