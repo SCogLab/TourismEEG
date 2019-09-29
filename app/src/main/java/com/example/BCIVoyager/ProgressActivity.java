@@ -28,7 +28,7 @@ public class ProgressActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress);
+        setContentView(R.layout.activity3_calibration);
         //ProgressBar pb = findViewById(R.id.progressBar);
         Toast.makeText(ProgressActivity.this, "Test capteurs en cours...", Toast.LENGTH_LONG).show();
 

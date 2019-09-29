@@ -275,7 +275,7 @@ public class DemoSDK extends AppCompatActivity{
      */
     private void initToolBar(){
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.logo);
+        getSupportActionBar().setIcon(R.drawable.logo_zen);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.light_blue)));
         }

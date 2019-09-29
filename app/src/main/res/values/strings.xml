@@ -56,6 +56,20 @@
     <string name="v_ip">Adresse IP</string>
 
     // Text app BCI Voyager
-    <string name="welcomeMsg">"Bonjour, bienvenue dans l'expérience BCI Voyager"</string>
+
+    //Launchsreen (activity1)
+    <string name="welcomeMsg">"Bonjour et bienvenue dans l'expérience"</string>
+    <string name="refcoglab">"by CogLab, NeuroTechX Paris"</string>
+    <string name="with">"avec"</string>
+    <string name="partner">"Partenaires"</string>
+
+    //Lancement de l'expérience (activity4)
+    <string name="launch">"Launch"</string>
+    <string name="look">"Look at this pictures"</string>
+
+    //Page de résultats
+    <string name="result">"Results"</string>
+    <string name="txt_thx">"Merci, l’expérience est terminée !"</string>
+    <string name="txt_disc_result">"Découvrons vos résultats :"</string>
 
 </resources>

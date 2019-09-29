@@ -42,7 +42,7 @@ public class Activity_Images extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_images);
+        setContentView(R.layout.activity5_images);
 
         initConnectionStateListener();
         initEegListener();
@@ -101,7 +101,7 @@ public class Activity_Images extends AppCompatActivity {
         final TextView tv = findViewById(R.id.textView2);
 
         // On change l'image
-        img.setImageResource(R.drawable.logo);
+        img.setImageResource(R.drawable.logo_zen);
         Date date = new Date();
 
 

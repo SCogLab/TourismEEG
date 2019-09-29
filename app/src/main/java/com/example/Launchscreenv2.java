@@ -188,7 +188,7 @@ public class Launchscreenv2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_launchscreenv2);
+        setContentView(R.layout.activity2_connexion);
 
         //toast = Toast.makeText(HomeActivity.this, "", Toast.LENGTH_LONG);
         sdkClient = MbtClient.init(getApplicationContext());
