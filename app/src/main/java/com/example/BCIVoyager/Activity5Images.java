@@ -417,6 +417,7 @@ public class Activity5Images extends AppCompatActivity {
     private void stopStream() {
         isStreaming = false;
         sdkClient.stopStream();
+        Toast.makeText(Activity5Images.this, "Stop streaming", Toast.LENGTH_LONG).show();
     }
 
     private boolean isConnected = false;

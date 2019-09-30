@@ -1,11 +1,14 @@
 <resources>
+
+    <string name="app_name">BCI Voyager</string>
+    <string name="app_name_set">BCI Voyager (Setting)</string>
+
     <string name="connectBluetooth">Connection Bluetooth</string>
     <string name="ScanBT">Scan en cours</string>
 
     <string name="title_activity_fullscreen">BCI Voyager (Fullscreen)</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="app_name">BCI Voyager</string>
 
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
@@ -46,6 +49,7 @@
     <string name="no_connected_headset">No connected headset </string>
     <string name="error_read_battery">An error occurred : impossible to get the battery level</string>
 
+
     // Bouton pour menu contextuel BCI Voyager
     <string name="v_startVoyager">START</string>  // Launch splash screen
     <string name="v_restart">Relaunch</string>    // Restart trial
@@ -53,11 +57,7 @@
     <string name="v_demo">Demo</string>           // Melomind demo app
     <string name="v_quit">Quit</string>           // Kill app
 
-    <string name="v_settings">Settings</string>   // Renvoi vers la page de paramètres
-    <string name="v_ip">Adresse IP</string>
 
-
-    <string name="qualities"></string>
 
     // Text app BCI Voyager
 
@@ -74,6 +74,9 @@
     //Calibration (activity3)
     <string name="t_calibration">"Calibration"</string>
     <string name="demarrer">"Démarrer"</string>
+    <string name="qualities">quality</string>
+    <string name="qualities_p3">p3</string>
+    <string name="qualities_p4">p4</string>
 
     //Lancement de l'expérience (activity4)
     <string name="t_launch">"Launch"</string>
@@ -86,5 +89,9 @@
 
     //Page de paramètres
     <string name="t_setting">"BCI Voyager Settings"</string>
+    <string name="v_settings">Settings</string>   // Renvoi vers la page de paramètres
+    <string name="v_ip">Adresse IP</string>
+
+
 
 </resources>

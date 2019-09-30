@@ -13,6 +13,8 @@ import features.MbtFeatures;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewDebug;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Date;
 
@@ -93,6 +95,10 @@ public class Activity3Calibration extends AppCompatActivity {
                 //int cpt = 0;
                 if (isStreaming) {
                     executeAsync(new Runnable() {
+
+                        TextView vP3 =  (TextView) findViewById(R.id.valueP3);
+                        TextView vP4 =  (TextView) findViewById(R.id.valueP4);
+
                         @Override
                         public void run() {
                             Float p3 = mbtEEGPackets.getQualities().get(0);
@@ -100,6 +106,21 @@ public class Activity3Calibration extends AppCompatActivity {
                             Log.d("P3", p3.toString());
                             Log.d("P4", p4.toString());
                             Log.d("tag", "");
+
+                            /*
+                                Fonction pour afficher l'état des capteurs by Rouffi
+                             */
+                            //vP3.setText(p3.toString());
+                            //vP4.setText(p4.toString());
+                            //vP3.setText(String.valueOf(p3));
+                            //vP4.setText(String.valueOf(p4));
+                            if(p3 >= 0.5) vP3.setTextColor(getResources().getColor(R.color.green_coglab));
+                            else vP3.setTextColor(getResources().getColor(R.color.red));
+
+                            if(p4 >= 0.5) vP4.setTextColor(getResources().getColor(R.color.green_coglab));
+                            else vP4.setTextColor(getResources().getColor(R.color.red));
+
+
                             if (p3 >= 0.5 || p4 >= 0.5) {
                                 cptCapteur = cptCapteur + 1;
                                 Log.e("Activity3Calibration", "cpt++");

@@ -4,12 +4,13 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId 'coglab.bci.voyager'
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         applicationIdSuffix = 'voyager'
+        signingConfig signingConfigs.debug
     }
     buildTypes {
         release {
