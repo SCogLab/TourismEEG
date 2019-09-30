@@ -22,7 +22,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:text="@string/txt_thx"
         android:textSize="40sp"
         android:gravity="center"
@@ -30,39 +30,40 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:text="@string/txt_disc_result"
         android:textSize="40sp"
         android:gravity="center"
         android:textColor="@color/white" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_disc_result"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/green_coglab"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/c_start"
-            android:layout_width="240dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:text="@string/v_startVoyager"
-            android:background="@color/light_blue"
-            android:elevation="10dp"
-            android:textColor="@color/white"
-            android:textSize="22sp"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        android:layoutMode="clipBounds">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_alignParentBottom="true"
-            android:padding="20dp"
-            android:clickable="true"
+            android:id="@+id/menuFloating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             app:srcCompat="@drawable/coglab_transparent"
             android:background="@color/green_strong_coglab"
-            android:layout_marginBottom="15dip"/>
-
+            android:layout_margin="15dip"/>
     </RelativeLayout>
 </LinearLayout>

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:screenOrientation="landscape"
     android:orientation="vertical"
     android:background="@color/black_overlay"
@@ -17,14 +15,12 @@
         android:gravity="center"
         android:text="@string/t_setting"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/guidelineBottomTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dip">
+        android:layout_margin="30dip">
 
         <LinearLayout
             android:layout_width="300dip"
@@ -36,62 +32,47 @@
                 android:layout_height="40dip"
                 android:text="@string/osc_streaming"
                 android:textColor="@color/white"
-                android:onClick="onCheckboxClicked"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp1"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-                />
+                android:onClick="onCheckboxClicked" />
 
             <Switch android:id="@+id/checkbox_fileexport"
                 android:layout_width="200dip"
                 android:layout_height="40dip"
                 android:text="@string/filexport_streaming"
                 android:textColor="@color/white"
-                android:onClick="onCheckboxClicked"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp1"/>
+                android:onClick="onCheckboxClicked"/>
 
             <Switch android:id="@+id/checkbox_P300"
                 android:layout_width="200dip"
                 android:layout_height="40dip"
                 android:textColor="@color/white"
                 android:text="@string/P300_triggers"
-                android:onClick="onCheckboxClicked"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp2"/>
+                android:onClick="onCheckboxClicked"/>
 
             <Switch android:id="@+id/checkbox_audiobt"
                 android:layout_width="200dip"
                 android:layout_height="40dip"
                 android:textColor="@color/white"
                 android:text="@string/bluetooth_audio_connect"
-                android:onClick="onCheckboxClicked"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp2"/>
+                android:onClick="onCheckboxClicked"/>
 
             <Switch android:id="@+id/checkbox_qualities"
                 android:layout_width="200dip"
                 android:layout_height="40dip"
                 android:textColor="@color/white"
                 android:text="Qualities"
-                android:onClick="onCheckboxClicked"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp3"/>
+                android:onClick="onCheckboxClicked"/>
 
             <Switch android:id="@+id/switch_filter"
                 android:layout_width="200dip"
                 android:layout_height="40dip"
                 android:textColor="@color/white"
-                android:text="Activate Filter"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp3"/>
+                android:text="Activate Filter"/>
 
             <Switch android:id="@+id/switch_gain"
                 android:layout_width="200dip"
                 android:layout_height="40dip"
                 android:textColor="@color/white"
-                android:text="Activate Gain"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp4"/>
+                android:text="Activate Gain"/>
         </LinearLayout>
 
         <LinearLayout
@@ -104,18 +85,14 @@
                 android:layout_width="200dip"
                 android:layout_height="50dip"
                 android:textColor="@color/white"
-                android:entries="@array/filter_array"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp3"/>
+                android:entries="@array/filter_array"/>
 
             <Spinner
                 android:id="@+id/ampgain_spinner"
                 android:layout_width="200dip"
                 android:layout_height="50dip"
                 android:textColor="@color/white"
-                android:entries="@array/ampgain_array"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp4"/>
+                android:entries="@array/ampgain_array"/>
 
             <!--Network selection-->
 
@@ -129,9 +106,7 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:inputType="number|numberDecimal"
-                android:digits="0123456789."
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp1"/>
+                android:digits="0123456789."/>
 
             <EditText
                 android:id="@+id/osc_PortAddressField"
@@ -140,9 +115,7 @@
                 android:singleLine="true"
                 android:hint="@string/ip_port"
                 android:inputType="number"
-                android:textSize="15sp"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineBottomProp1"/>
+                android:textSize="15sp"/>
 
             <!-- Triggers Notes-->
             <EditText
@@ -151,9 +124,7 @@
                 android:layout_height="50dip"
                 android:inputType="textMultiLine"
                 android:hint="Enter Experimenter notes"
-                android:textSize="15sp"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp2"/>
+                android:textSize="15sp"/>
 
             <!-- Quality Values-->
             <EditText
@@ -161,199 +132,58 @@
                 android:layout_height="50dip"
                 android:singleLine="true"
                 android:textSize="15sp"
-                android:hint="Qualities Values"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightTop"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineTopProp3"/>
+                android:hint="Qualities Values"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="300dip"
+            android:layout_width="250dip"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/startStopStreamingButton"
-                style="@style/Base.Widget.AppCompat.Button.Small"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:text="@string/start_streaming"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                app:layout_constraintTop_toTopOf="@+id/guidelineBottomChannels"
-                app:layout_constraintBottom_toBottomOf="@id/guidelineBottomStartStop"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartLeftBottom"
-                app:layout_constraintRight_toRightOf="@+id/guidelineEndBottomLeft" />
+                android:textSize="15sp"/>
 
             <Button
                 android:id="@+id/readBatteryButton"
-                style="@style/Base.Widget.AppCompat.Button.Small"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:text="@string/read_battery"
                 android:textColor="@color/white"
-                android:textSize="12sp"
+                android:textSize="15sp" />
 
-                app:layout_constraintTop_toTopOf="@+id/guidelineBottomChannels"
-                app:layout_constraintBottom_toBottomOf="@id/guidelineBottomStartStop"
-                app:layout_constraintLeft_toLeftOf="@+id/guidelineStartRightBottom"
-                app:layout_constraintRight_toRightOf="@+id/guidelineEndRightBottom"
-                />
+            <Button
+                android:id="@+id/c_start"
+                android:text="@string/start"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@color/green_strong_coglab"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+            <Button
+                android:id="@+id/c_demo"
+                android:text="@string/v_demo"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@color/light_blue"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
     </LinearLayout>
-    <!-- GRAPH-->
 
 
     <com.github.mikephil.charting.charts.LineChart
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:id="@+id/eegGraph"
-        app:layout_constraintTop_toBottomOf="@id/guidelineBottomProp4"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineBottomChannels" />
+        android:id="@+id/eegGraph" />
 
-
-
-    <!-- VERTICAL GUIDELINES-->
-
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineStartTop"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.05" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineEndLeftTop"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.5" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineStartRightTop"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.53" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineStartLeftBottom"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.05" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineEndBottomLeft"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.5" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineStartRightBottom"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.53" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineEndRightBottom"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.95" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineEndRight"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        custom:layout_constraintGuide_percent="0.95" />
-
-
-    <!-- HORIZONTAL GUIDELINES-->
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineBottomTitle"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.05" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineTopProp1"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.1" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineBottomProp1"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.15" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineTopProp2"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.2" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineBottomProp2"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.25" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineTopProp3"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.3" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineBottomProp3"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.35" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineTopProp4"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.4" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineBottomProp4"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.45" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineBottomChannels"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.9" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineBottomStartStop"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        custom:layout_constraintGuide_percent="0.99" />
 
 </LinearLayout>

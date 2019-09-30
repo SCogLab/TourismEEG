@@ -41,8 +41,8 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="370dp"
-        android:layout_height="270dp"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
         tools:srcCompat="@tools:sample/avatars" />
 

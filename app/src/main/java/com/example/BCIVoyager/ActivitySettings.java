@@ -43,7 +43,7 @@ public class ActivitySettings extends AppCompatActivity {
 
         btn_start.setOnClickListener(view ->  {
             Log.i("t", "Change activity");
-            Intent myIntent = new Intent(getBaseContext(), Activity2Connexion.class);
+            Intent myIntent = new Intent(getBaseContext(), Activity1Launchscreen.class);
             startActivityForResult(myIntent, 0);
         });
 

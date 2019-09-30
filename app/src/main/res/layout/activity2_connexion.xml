@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dip"
-            android:text="@string/t_launch"
+            android:text="@string/t_connect"
             android:textSize="25sp"
             android:gravity="center"
             android:textColor="@color/white" />
@@ -28,8 +28,8 @@
 
                 <ImageView
                     android:id="@+id/logomelomind"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     app:srcCompat="@drawable/logo_melomind_mini"
                     android:contentDescription="Logo Melomind"/>
 
@@ -38,14 +38,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:text="@string/d_point"
+                    android:layout_margin="40dip"
                     android:textSize="50sp"
                     android:gravity="center"
                     android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/logo_bt"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     app:srcCompat="@drawable/logo_bluetooth_white" />
         </LinearLayout>
 
@@ -55,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="100dip"
+            android:layout_margin="70dip"
             android:padding="20dip"
             android:background="@color/light_blue"
             android:textColor="@color/white"

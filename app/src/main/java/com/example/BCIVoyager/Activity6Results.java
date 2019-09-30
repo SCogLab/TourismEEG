@@ -14,9 +14,16 @@ public class Activity6Results extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity6_result);
-        Button b = findViewById(R.id.launchXP);
 
+        /*Button b = findViewById(R.id.launchXP);
         b.setOnClickListener(view ->  {
+            Log.i("t", "Change activity");
+            Intent myIntent = new Intent(getBaseContext(), Activity1Launchscreen.class);
+            startActivityForResult(myIntent, 0);
+        });*/
+
+        Button btn_menu = findViewById(R.id.menuFloating);
+        btn_menu.setOnClickListener(view ->  {
             Log.i("t", "Change activity");
             Intent myIntent = new Intent(getBaseContext(), Activity1Launchscreen.class);
             startActivityForResult(myIntent, 0);
