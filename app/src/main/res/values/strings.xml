@@ -80,6 +80,8 @@
 
     //Lancement de l'expérience (activity4)
     <string name="t_launch">"Launch"</string>
+    <string name="choice">"< 5 >"</string>
+    <string name="ready">"Ready ?"</string>
     <string name="look">"Look carefully at the following images"</string>
 
     //Page de résultats

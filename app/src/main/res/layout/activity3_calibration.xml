@@ -25,49 +25,6 @@
         android:layout_marginTop="70dip"
         android:gravity="center">
 
-        <ImageView
-            android:id="@+id/logomelomind"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/logo_melomind_mini"
-            android:contentDescription="Logo Melomind"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:text="@string/d_point"
-            android:textSize="50sp"
-            android:gravity="center"
-            android:textColor="@color/green_strong_coglab" />
-
-        <ImageView
-            android:id="@+id/logo_bt"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/logo_bluetooth" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:text="@string/d_point"
-            android:textSize="50sp"
-            android:gravity="center"
-            android:textColor="@color/white" />
-
-        <ImageView
-            android:id="@+id/logo_brain"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/logo_brain" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dip"
-        android:gravity="center">
-
         <TextView
             android:id="@+id/valueP3"
             android:layout_width="wrap_content"
@@ -79,8 +36,10 @@
 
         <ImageView
             android:id="@+id/melopics"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
             app:srcCompat="@drawable/melomind_pics" />
 
         <TextView
