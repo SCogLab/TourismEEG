@@ -33,6 +33,12 @@ import features.MbtFeatures;
 import static utils.MatrixUtils.invertFloatMatrix;
 
 public class Activity5Images extends AppCompatActivity {
+
+    /**
+     * Nombre d'image par catégorie. Toutes les catégories ont le meme nombre d'image
+     */
+    Integer nbImgCat = 29;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,9 @@ public class Activity5Images extends AppCompatActivity {
 
         initConnectionStateListener();
         initEegListener();
+
+        Intent intent = getIntent();
+        nbImgCat = intent.getIntExtra("nbImg",29);
 
         sdkClient = MbtClient.getClientInstance();
         sdkClient.setConnectionStateListener(bluetoothStateListener);
@@ -317,10 +326,10 @@ public class Activity5Images extends AppCompatActivity {
     Compteur pour le tableau
      */
     int compteur = 0;
-    /**
-     * Nombre d'image par catégorie. Toutes les catégories ont le meme nombre d'image
-     */
-    Integer nbImgCat = 29;
+
+
+
+
     // TODO: 2019-09-09 Ici ajouter modifer et mettre le bon nombre d'image
     /**
      * Nombre d'image totale (peut surement etre fait automatiquement)

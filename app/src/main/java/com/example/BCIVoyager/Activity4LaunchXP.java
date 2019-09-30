@@ -14,11 +14,18 @@ public class Activity4LaunchXP  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity4_launchxp);
         Button b = findViewById(R.id.launchXP);
-
         b.setOnClickListener(view ->  {
-
             Log.i("t", "Change activity");
             Intent myIntent = new Intent(getBaseContext(), Activity5Images.class);
+            myIntent.putExtra("nbimg",29);
+            startActivityForResult(myIntent, 0);
+        });
+
+        Button demo = findViewById(R.id.launchXP);
+        demo.setOnClickListener(view ->  {
+            Log.i("t", "Change activity");
+            Intent myIntent = new Intent(getBaseContext(), Activity5Images.class);
+            myIntent.putExtra("nbimg",10);
             startActivityForResult(myIntent, 0);
         });
     }

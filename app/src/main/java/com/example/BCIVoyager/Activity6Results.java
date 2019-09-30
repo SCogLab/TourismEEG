@@ -15,6 +15,8 @@ public class Activity6Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity6_result);
 
+        //String c1 = (String) findViewById(R.id.categ1);
+
         /*Button b = findViewById(R.id.launchXP);
         b.setOnClickListener(view ->  {
             Log.i("t", "Change activity");
