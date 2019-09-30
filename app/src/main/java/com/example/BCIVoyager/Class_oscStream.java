@@ -33,8 +33,8 @@ import static utils.MatrixUtils.invertFloatMatrix;
 public class Class_oscStream extends AsyncTask<MbtEEGPacket, Void, Void> {
 
 
-    String myIP = "172.28.49.116";//"192.168.1.33";//"172.28.49.116";
-    int myPort = 8080;//5000;
+    String myIP = "192.168.137.124";//"192.168.1.33";//"172.28.49.116";    172.28.49.116
+    int myPort = 5000;//5000;  8080
 
 
     public void sendOSC(String imgName) {
@@ -73,8 +73,7 @@ public class Class_oscStream extends AsyncTask<MbtEEGPacket, Void, Void> {
             batLvl = battLvl;
         }
 
-    Class_oscStream() {
-    }
+    //Class_oscStream() {}
 
         @Override
         protected Void doInBackground(MbtEEGPacket... mbtEEGPackets) {
@@ -96,7 +95,7 @@ public class Class_oscStream extends AsyncTask<MbtEEGPacket, Void, Void> {
                     packet.setChannelsData(invertFloatMatrix(packet.getChannelsData()));
 
                     //pour déterminer le casque utilisé et faire le traitement distant
-                    OSCMessage messageHeadsetValue = new OSCMessage(base_address+melomind_headset_name);
+                    OSCMessage messageHeadsetValue = new OSCMessage(base_address + melomind_headset_name);
                     messageHeadsetValue.addArgument(melomind_headset_name);
 
                     //pour déterminer le timestamp du record

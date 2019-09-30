@@ -89,6 +89,12 @@
     <string name="txt_thx">"Merci, l’expérience est terminée !"</string>
     <string name="txt_disc_result">"Découvrons vos résultats :"</string>
 
+    <string name="c1">"C1 Aventure et plein air / Adventure and nature"</string>
+    <string name="c2">"C2 Vacances en famille / Family vacation"</string>
+    <string name="c3">"C3 Santé et bien être / Health and well-being"</string>
+    <string name="c4">"C4 Plage, soleil et baignades / Beach and sun"</string>
+    <string name="c5">"C5 Neige et sport d’hivers // Snow and ski"</string>
+
     //Page de paramètres
     <string name="t_setting">"BCI Voyager Settings"</string>
     <string name="v_settings">Settings</string>   // Renvoi vers la page de paramètres

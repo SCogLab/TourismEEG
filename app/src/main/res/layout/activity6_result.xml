@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_disc_result"
+            android:text="@string/c1"
             android:textSize="40sp"
             android:gravity="center"
             android:textColor="@color/white" />

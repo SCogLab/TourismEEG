@@ -403,7 +403,7 @@ public class Activity5Images extends AppCompatActivity {
 
                     //Class_oscStream appBCI = new Class_oscStream();
                     //appBCI.execute(mbtEEGPackets);
-                    new Class_oscStream().execute(mbtEEGPackets);
+                    new Class_oscStream("0", "50").execute(mbtEEGPackets);
 
                     //}
                 }
