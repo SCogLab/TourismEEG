@@ -60,7 +60,7 @@
             <TextView
                 android:id="@+id/categ1"
                 android:text="@string/c1"
-                android:textSize="20sp"
+                android:textSize="27sp"
                 android:textColor="@color/white"
                 android:layout_column="1"
                 android:padding="3dip"
@@ -81,7 +81,7 @@
             <TextView
                 android:id="@+id/categ2"
                 android:text="@string/c2"
-                android:textSize="20sp"
+                android:textSize="27sp"
                 android:textColor="@color/white"
                 android:layout_column="1"
                 android:padding="3dip"
@@ -103,7 +103,7 @@
             <TextView
                 android:id="@+id/categ3"
                 android:text="@string/c3"
-                android:textSize="20sp"
+                android:textSize="27sp"
                 android:textColor="@color/white"
                 android:layout_column="1"
                 android:padding="3dip"
@@ -124,7 +124,7 @@
             <TextView
                 android:id="@+id/categ4"
                 android:text="@string/c4"
-                android:textSize="20sp"
+                android:textSize="27sp"
                 android:textColor="@color/white"
                 android:padding="3dip"
                 />
@@ -146,7 +146,7 @@
                 android:layout_column="1"
                 android:layout_span="2"
                 android:text="@string/c5"
-                android:textSize="20sp"
+                android:textSize="27sp"
                 android:textColor="@color/white"
                 android:padding="3dip"
                 />
@@ -160,10 +160,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="0dp"
         android:layoutMode="clipBounds">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <Button
             android:id="@+id/menuFloating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -33,8 +33,78 @@ import static utils.MatrixUtils.invertFloatMatrix;
 public class Class_oscStream extends AsyncTask<MbtEEGPacket, Void, Void> {
 
 
-    String myIP = "192.168.137.124";//"192.168.1.33";//"172.28.49.116";    172.28.49.116
-    int myPort = 5000;//5000;  8080
+    String myIP = "192.168.137.1";
+    // 192.168.137.124  "192.168.1.33";//"172.28.49.116";  172.28.49.116
+    int myPort = 5000; //5000;  8080
+
+
+    public void sendOSC(String address, int compteur) {
+        OSCPortOut osc_port = null;
+        try {
+            osc_port = new OSCPortOut(InetAddress.getByName(myIP), myPort);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        ;
+        OSCMessage oscmessage = new OSCMessage("/" + address);
+        oscmessage.addArgument(compteur);
+        try {
+            osc_port.send(oscmessage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            osc_port = new OSCPortOut(InetAddress.getByName(myIP), myPort);
+            osc_port.send(oscmessage);
+            Log.d("osc message", "categorie type");
+        } catch (SocketException e) {
+            Log.d("OSC2", "Socket Exception");
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            Log.d("OSC2", "Unknown Exception");
+            e.printStackTrace();
+        } catch (IOException e) {
+            Log.d("OSC2", "IO Exception");
+            e.printStackTrace();
+        }
+
+    }
+    public void sendOSC(String address, char compteur) {
+        OSCPortOut osc_port = null;
+        try {
+            osc_port = new OSCPortOut(InetAddress.getByName(myIP), myPort);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        ;
+        OSCMessage oscmessage = new OSCMessage("/" + address);
+        oscmessage.addArgument(compteur);
+        try {
+            Log.d("send message", compteur+"");
+            osc_port.send(oscmessage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            osc_port = new OSCPortOut(InetAddress.getByName(myIP), myPort);
+            osc_port.send(oscmessage);
+            Log.d("osc message", "categorie type");
+        } catch (SocketException e) {
+            Log.d("OSC2", "Socket Exception");
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            Log.d("OSC2", "Unknown Exception");
+            e.printStackTrace();
+        } catch (IOException e) {
+            Log.d("OSC2", "IO Exception");
+            e.printStackTrace();
+        }
+
+    }
 
 
     public void sendOSC(String imgName) {

@@ -13,6 +13,9 @@
         android:immersive="true">
 
         <activity android:name="com.example.BCIVoyager.Activity2Connexion"
+            android:label="Connexion"
+            android:icon="@mipmap/ic_launcher"
+            android:theme="@style/AppTheme"
             android:screenOrientation="landscape">
         </activity>
 
@@ -32,15 +35,12 @@
             android:screenOrientation="landscape">
         </activity>
 
-        <activity android:name="com.example.BCIVoyager.ActivitySettings"
-            android:label="@string/app_name_set"
-            android:screenOrientation="landscape">
-        </activity>
 
         <activity
             android:name=".Activity1Launchscreen"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
+            android:theme="@style/AppTheme"
             android:immersive="true">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
@@ -51,6 +51,13 @@
                     android:host="coglab.fr"
                     android:scheme="https" />
             </intent-filter>
+        </activity>
+
+        <activity android:name="com.example.BCIVoyager.ActivitySettings"
+            android:label="Settings"
+            android:icon="@mipmap/ic_launcher"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

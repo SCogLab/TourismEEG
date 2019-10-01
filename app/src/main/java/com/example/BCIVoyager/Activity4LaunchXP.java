@@ -21,11 +21,11 @@ public class Activity4LaunchXP  extends AppCompatActivity {
             startActivityForResult(myIntent, 0);
         });
 
-        Button demo = findViewById(R.id.launchXP);
+        Button demo = findViewById(R.id.launchXPFast);
         demo.setOnClickListener(view ->  {
             Log.i("t", "Change activity");
             Intent myIntent = new Intent(getBaseContext(), Activity5Images.class);
-            myIntent.putExtra("nbimg",10);
+            myIntent.putExtra("nbimg",8);
             startActivityForResult(myIntent, 0);
         });
     }

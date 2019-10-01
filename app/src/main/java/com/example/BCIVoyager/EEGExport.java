@@ -70,26 +70,34 @@ public class EEGExport {
         recorderInfos = recorder_info;
     }
 
-    EEGExport() {
-    }
-
-    public void createCSV(String fileName) {
+    EEGExport(String fileName) {
+        this.fileName = fileName;
         File folder = new File(baseDir + File.separator + eegSubDir);
+
         if (!folder.exists()) {
             folder.mkdir();
         }
+
+        if (!fileName.contains(".csv"))
+            fileName = fileName + ".csv";
+
         try {
             //check if file exist (change every 60 seconds otherwise button_pressed or manual)
             fileExported = new File(folder + File.separator + fileName);
-
+            if (fileExported.exists()) {
+                fileExported.delete();
+                Log.d("EEGExport", "File delet : " + fileExported);
+            }
             if (!fileExported.exists()) {
                 fileExported.createNewFile();
                 Log.d("EEGExport", "File created : " + fileExported);
             }
 
+
         } catch (IOException ioe) {
             Log.d("EEGExport", "Creating File failed");
         }
+
         csvWriter = new CsvWriter();
         csvWriter.setFieldSeparator(',');
         //csvWriter.setTextDelimiter('\'');
@@ -99,69 +107,22 @@ public class EEGExport {
 
         try (CsvAppender csvAppender = csvWriter.append(fileExported, StandardCharsets.UTF_8)) {
             // header
-            csvAppender.appendLine("timestamp", "P3", "P4", "Category");
+            csvAppender.appendLine("timestamp", "P3", "P4");
         } catch (IOException ioe) {
             Log.d("EEExport", "A File Error occurs");
         }
     }
 
-    public String arrayFloatToString(Float[] tab) {
-        StringBuilder str = new StringBuilder();
-        str.append('[');
-        for (Float f : tab) {
-            str.append(f);
-            str.append(",");
-        }
-        str.deleteCharAt(str.length() - 1);
-        str.append(']');
 
-        return str.toString();
-    }
-
-
-    public void writeCSV(String timestamp, Float[] p3, Float[] p4, String category) { //String.valueOf(eegPacket.getTimeStamp())
-        csvWriter = new CsvWriter();
-        csvWriter.setFieldSeparator(',');
-        //csvWriter.setTextDelimiter('\'');
-        csvWriter.setLineDelimiter("\r\n".toCharArray());
-        //csvWriter.setAlwaysDelimitText(true);
-
-        try (CsvAppender csvAppender = csvWriter.append(fileExported, StandardCharsets.UTF_8)) {
-            csvAppender.appendLine(timestamp);
-            csvAppender.appendField(arrayFloatToString(p3));
-            csvAppender.appendField(arrayFloatToString(p4));
-            csvAppender.appendField(category);
-        } catch (IOException ioe) {
-            Log.d("EEExport", "A File Error occurs");
-        }
-    }
-
-    //@Override
     protected Void doInBackground(MbtEEGPacket... mbtEEGPackets) {
 
-        fileSuffix = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
+        //fileSuffix = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
 
-        fileName = "melo_" + melomind_headset_name + "_" + fileSuffix + ".csv";
+        //fileName = "melo_" + melomind_headset_name + "_" + fileSuffix + ".csv";
 
         //Test if subfolder exists and if not create
         File folder = new File(baseDir + File.separator + eegSubDir);
-
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
-
-        try {
-            //check if file exist (change every 60 seconds otherwise button_pressed or manual)
-            fileExported = new File(folder + File.separator + fileName);
-
-            if (!fileExported.exists()) {
-                fileExported.createNewFile();
-                Log.d("EEGExport", "File created : " + fileExported);
-            }
-
-        } catch (IOException ioe) {
-            Log.d("EEGExport", "Creating File failed");
-        }
+        fileExported = new File(folder + File.separator + fileName);
 
 
         csvWriter = new CsvWriter();
@@ -173,7 +134,7 @@ public class EEGExport {
 
         try (CsvAppender csvAppender = csvWriter.append(fileExported, StandardCharsets.UTF_8)) {
             // header
-            csvAppender.appendLine("timestamp", "P3", "P4", "Category", "battLvl", "note", "recorder_info", "system_info", "recording_note", "headset_info");
+            //csvAppender.appendLine("timestamp", "P3", "P4", "Category", "battLvl", "note", "recorder_info", "system_info", "recording_note", "headset_info");
 
             for (MbtEEGPacket eegPacket : mbtEEGPackets) {
 
@@ -193,8 +154,9 @@ public class EEGExport {
                     csvAppender.appendField(String.valueOf(System.nanoTime()));
                     csvAppender.appendField(String.valueOf(eegPacket.getChannelsData().get(0).get(currentEegData) * 1000000)); //P3
                     csvAppender.appendField(String.valueOf(eegPacket.getChannelsData().get(1).get(currentEegData) * 1000000)); //P4
-                    csvAppender.appendField(getCategory());
+                    //csvAppender.appendField(getCategory());
 
+                    csvAppender.endLine();
                         /*statusData = eegPacket.getStatusData();
 
                         if (statusData != null) {
@@ -202,7 +164,7 @@ public class EEGExport {
                         } else {
                             csvAppender.appendField(String.valueOf(Float.NaN));
                         }*/
-
+                    /*
                     csvAppender.appendField(batLvl);
                     csvAppender.appendField(note);
                     csvAppender.appendField(getRecorderInfos());
@@ -210,6 +172,7 @@ public class EEGExport {
                     csvAppender.appendField(recordingNote);
                     csvAppender.appendField("melo_" + melomind_headset_name);
                     csvAppender.endLine();
+                    */
                     //}
                     //eegPacket.getChannelsData();
                 }
@@ -282,4 +245,71 @@ public class EEGExport {
         this.category = category;
 
     }
+
+    /*
+
+    public void createCSV(String fileName) {
+        File folder = new File(baseDir + File.separator + eegSubDir);
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+        try {
+            //check if file exist (change every 60 seconds otherwise button_pressed or manual)
+            fileExported = new File(folder + File.separator + fileName);
+
+            if (!fileExported.exists()) {
+                fileExported.createNewFile();
+                Log.d("EEGExport", "File created : " + fileExported);
+            }
+
+        } catch (IOException ioe) {
+            Log.d("EEGExport", "Creating File failed");
+        }
+        csvWriter = new CsvWriter();
+        csvWriter.setFieldSeparator(',');
+        //csvWriter.setTextDelimiter('\'');
+        csvWriter.setLineDelimiter("\r\n".toCharArray());
+        //csvWriter.setAlwaysDelimitText(true);
+
+
+        try (CsvAppender csvAppender = csvWriter.append(fileExported, StandardCharsets.UTF_8)) {
+            // header
+            csvAppender.appendLine("timestamp", "P3", "P4", "Category");
+        } catch (IOException ioe) {
+            Log.d("EEExport", "A File Error occurs");
+        }
+    }
+
+    public String arrayFloatToString(Float[] tab) {
+        StringBuilder str = new StringBuilder();
+        str.append('[');
+        for (Float f : tab) {
+            str.append(f);
+            str.append(",");
+        }
+        str.deleteCharAt(str.length() - 1);
+        str.append(']');
+
+        return str.toString();
+    }
+
+
+    public void writeCSV(String timestamp, Float[] p3, Float[] p4, String category) { //String.valueOf(eegPacket.getTimeStamp())
+        csvWriter = new CsvWriter();
+        csvWriter.setFieldSeparator(',');
+        //csvWriter.setTextDelimiter('\'');
+        csvWriter.setLineDelimiter("\r\n".toCharArray());
+        //csvWriter.setAlwaysDelimitText(true);
+
+        try (CsvAppender csvAppender = csvWriter.append(fileExported, StandardCharsets.UTF_8)) {
+            csvAppender.appendLine(timestamp);
+            csvAppender.appendField(arrayFloatToString(p3));
+            csvAppender.appendField(arrayFloatToString(p4));
+            csvAppender.appendField(category);
+        } catch (IOException ioe) {
+            Log.d("EEExport", "A File Error occurs");
+        }
+    }
+
+     */
 }

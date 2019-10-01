@@ -82,9 +82,9 @@
     <string name="t_launch">"Launch"</string>
     <string name="choice">"&lt;  5  &gt;"</string>
     <string name="ready">"Ready ?"</string>
-    <string name="btn_slowdemo">"Normal"</string>
-    <string name="btn_fastdemo">"Rapide"</string>
-    <string name="look">"Look carefully at the following images"</string>
+    <string name="btn_slowdemo">"Normal (7')"</string>
+    <string name="btn_fastdemo">"Fast (2')"</string>
+    <string name="look">"Look carefully at the following pictures"</string>
 
     //Page de résultats
     <string name="t_result">"Results"</string>
