@@ -197,7 +197,7 @@ public class Activity5Images extends AppCompatActivity {
                 if (keys.size() == 0 || compteur == nbFullImg) {
 
                     //new Class_oscStream().sendOSC("compteur", compteur);
-                    new Class_oscStream("0", "50").sendOSC("compteur", compteur);   // AJOUT D'UN DEVICE NAME !
+                    new Class_oscStream("1", "50").sendOSC("compteur", compteur);   // AJOUT D'UN DEVICE NAME !
                     //Log.i("#STOP",  "");
 
                     t.cancel(false);
@@ -457,7 +457,7 @@ public class Activity5Images extends AppCompatActivity {
                     mbtEEGPackets.setChannelsData(invertFloatMatrix(mbtEEGPackets.getChannelsData()));
 
                 if(isStreaming){
-                    new Class_oscStream("O", "50").execute(mbtEEGPackets);         // AJOUT D'UN DEVICE NAME !
+                    new Class_oscStream("1", "50").execute(mbtEEGPackets);         // AJOUT D'UN DEVICE NAME !
 
                     compterLesSecondes ++;
 
@@ -470,7 +470,7 @@ public class Activity5Images extends AppCompatActivity {
                             public void run() {
                                 try {
                                     classement = classement("eeg"+(compteurCsv-1)+".csv");
-                                    new Class_oscStream("0","50").sendOSC("classement", classement.charAt(0));     // AJOUT D'UN DEVICE NAME !
+                                    new Class_oscStream("1","50").sendOSC("classement", classement.charAt(0));     // AJOUT D'UN DEVICE NAME !
                                     Log.e("classement", classement);
                                 } catch (IOException e) {
                                     e.printStackTrace();

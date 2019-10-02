@@ -132,7 +132,7 @@ public class Activity3Calibration extends AppCompatActivity {
                                     cptCapteur--;
                             }
 
-                            if (cptCapteur == 10) {
+                            if (cptCapteur == 5) {
                                 //Toast.makeText(Activity3Calibration.this, "Test capteur ok !", Toast.LENGTH_LONG).show();
                                 final Intent intent = new Intent(Activity3Calibration.this, Activity4LaunchXP.class);
                                 startActivity(intent);

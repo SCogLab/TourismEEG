@@ -106,6 +106,17 @@
             android:background="@color/light_blue"
             android:textColor="@color/white"
             android:textSize="22sp"/>
+
+        <Button
+            android:id="@+id/launchXPUFast"
+            android:text="@string/btn_ultrafastdemo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dip"
+            android:layout_marginLeft="20dip"
+            android:background="@color/light_blue"
+            android:textColor="@color/white"
+            android:textSize="22sp"/>
     </LinearLayout>
 
     </LinearLayout>

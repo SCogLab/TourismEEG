@@ -84,6 +84,7 @@
     <string name="ready">"Ready ?"</string>
     <string name="btn_slowdemo">"Normal (7')"</string>
     <string name="btn_fastdemo">"Fast (2')"</string>
+    <string name="btn_ultrafastdemo">"Ultra Fast (1')"</string>
     <string name="look">"Look carefully at the following pictures"</string>
 
     //Page de résultats
@@ -95,7 +96,7 @@
     <string name="c2">"C2 Vacances en famille / Family vacation"</string>
     <string name="c3">"C3 Santé et bien être / Health and well-being"</string>
     <string name="c4">"C4 Plage, soleil et baignades / Beach and sun"</string>
-    <string name="c5">"C5 Neige et sport d’hivers // Snow and ski"</string>
+    <string name="c5">"C5 Neige et sport d’hivers / Snow and ski"</string>
 
     //Page de paramètres
     <string name="t_setting">"BCI Voyager Settings"</string>

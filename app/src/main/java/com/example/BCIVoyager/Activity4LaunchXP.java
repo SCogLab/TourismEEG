@@ -28,6 +28,14 @@ public class Activity4LaunchXP  extends AppCompatActivity {
             myIntent.putExtra("nbimg",8);
             startActivityForResult(myIntent, 0);
         });
+
+        Button fast = findViewById(R.id.launchXPUFast);
+        fast.setOnClickListener(view ->  {
+            Log.i("t", "Change activity");
+            Intent myIntent = new Intent(getBaseContext(), Activity5Images.class);
+            myIntent.putExtra("nbimg",6);
+            startActivityForResult(myIntent, 0);
+        });
     }
 
     @Override
